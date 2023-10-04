@@ -15,6 +15,13 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        let item1 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action:  #selector(self.goToAstronomy))
+        
+        let item2 = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+        
+        self.navigationItem.rightBarButtonItems = [item1, item2]
+        
         scrollview.delegate = self
         scrollview.isDirectionalLockEnabled = true
 //        self.weatherImage.image = UIImage()
@@ -35,5 +42,17 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @objc func goToAstronomy() {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "astronomy") as? AstronomyViewController {
+            
+            // Afficher un modal
+            //self.present(vc, animated: true, completion: nil)
+            
+            // Afficher un push navigation
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+    }
 
 }
