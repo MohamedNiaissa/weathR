@@ -8,17 +8,24 @@
 import UIKit
 
 
-
+class WeatherCityCell: UITableViewCell {
+    @IBOutlet weak var cityWeatherLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
+}
 class SearchTableViewController: UITableViewController {
     
-    class WeatherCityCell: UITableViewCell {
-        @IBOutlet weak var cityLabel: UILabel!
-        @IBOutlet weak var maxTempLabel: UILabel!
-        @IBOutlet weak var minTempLabel: UILabel!
-        @IBOutlet weak var currentTempLabel: UILabel!
-        
-        
-    }
+    @IBOutlet weak var cityField: UITextField!
+    //    class WeatherCityCell: UITableViewCell {
+//        @IBOutlet weak var cityLabel: UILabel!
+//        @IBOutlet weak var maxTempLabel: UILabel!
+//        @IBOutlet weak var minTempLabel: UILabel!
+//        @IBOutlet weak var currentTempLabel: UILabel!
+//        
+//        
+//    }
     var cityList = ["Paris", "Lyon", "Lille"]
     
     override func viewDidLoad() {
@@ -56,6 +63,8 @@ class SearchTableViewController: UITableViewController {
         let city = self.cityList[indexPath.row]
         // Configure the cell...
         
+        cell.backgroundImage.layer.cornerRadius = 10
+
 
         return cell
     }
