@@ -18,7 +18,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
         
         let item1 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action:  #selector(self.goToAstronomy))
         
-        let item2 = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+        let item2 = UIBarButtonItem(barButtonSystemItem: .search, target: self, action:#selector(self.goToDetails))
         
         self.navigationItem.rightBarButtonItems = [item1, item2]
         
@@ -32,6 +32,8 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
 //           scrollview.contentOffset.x = 0
        // }
     }
+    
+    
 
     /*
     // MARK: - Navigation
@@ -54,5 +56,19 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
             
         }
     }
+    
+    @objc func goToDetails() {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "details") as? DetailsViewController {
+            
+            // Afficher un modal
+            //self.present(vc, animated: true, completion: nil)
+            
+            // Afficher un push navigation
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+    }
+    
+    
 
 }
