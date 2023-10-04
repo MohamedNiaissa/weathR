@@ -7,14 +7,23 @@
 
 import UIKit
 
-class OverviewViewController: UIViewController {
+class OverviewViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var scrollview: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        scrollview.delegate = self
+        scrollview.isDirectionalLockEnabled = true
+    
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //if scrollview.contentOffset.x>0 {
+            scrollview.contentOffset.x = 0
+       // }
+    }
 
     /*
     // MARK: - Navigation
