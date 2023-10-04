@@ -45,6 +45,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B125B39A2ACD5CAB000EF29B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B125B39B2ACD5CB6000EF29B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B174E5662ACC5E4A00955ACA /* Main.storyboard */,
+				B174E56B2ACC5E4B00955ACA /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B125B39C2ACD5CC0000EF29B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A83850FD2ACD4C25006FD670 /* OverviewViewController.swift */,
+				A83850FB2ACD4BED006FD670 /* DetailsViewController.swift */,
+				A83850F92ACD4BA7006FD670 /* AstronomyViewController.swift */,
+				A83850F72ACD4B11006FD670 /* SearchViewController.swift */,
+				A83850F52ACD4A97006FD670 /* HourTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		B174E5542ACC5E4A00955ACA = {
 			isa = PBXGroup;
 			children = (
@@ -66,14 +94,10 @@
 			children = (
 				B174E5602ACC5E4A00955ACA /* AppDelegate.swift */,
 				B174E5622ACC5E4A00955ACA /* SceneDelegate.swift */,
-				A83850FD2ACD4C25006FD670 /* OverviewViewController.swift */,
-				B174E5662ACC5E4A00955ACA /* Main.storyboard */,
-				A83850FB2ACD4BED006FD670 /* DetailsViewController.swift */,
-				A83850F92ACD4BA7006FD670 /* AstronomyViewController.swift */,
-				A83850F72ACD4B11006FD670 /* SearchViewController.swift */,
-				A83850F52ACD4A97006FD670 /* HourTableViewController.swift */,
+				B125B39C2ACD5CC0000EF29B /* Controller */,
+				B125B39B2ACD5CB6000EF29B /* View */,
+				B125B39A2ACD5CAB000EF29B /* Model */,
 				B174E5692ACC5E4B00955ACA /* Assets.xcassets */,
-				B174E56B2ACC5E4B00955ACA /* LaunchScreen.storyboard */,
 				B174E56E2ACC5E4B00955ACA /* Info.plist */,
 			);
 			path = weathr;
