@@ -17,12 +17,12 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
         
         scrollview.delegate = self
         scrollview.isDirectionalLockEnabled = true
-        self.weatherImage.image = UIImage()
+//        self.weatherImage.image = UIImage()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //if scrollview.contentOffset.x>0 {
-           scrollview.contentOffset.x = 0
+//           scrollview.contentOffset.x = 0
        // }
     }
 
