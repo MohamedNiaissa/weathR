@@ -20,6 +20,7 @@ struct Location: Codable {
 
 struct Current: Codable {
     let temp_c: Double
+    let condition: Condition
 }
 
 struct Forecast : Codable  {
@@ -57,6 +58,7 @@ class SearchTableViewController: UITableViewController {
     var minTempList = [Double]()
     var maxTempList = [Double]()
     var currentTempList = [Double]()
+    var backgroundWeather = [String]()
     
     
     override func viewDidLoad() {
@@ -83,6 +85,7 @@ class SearchTableViewController: UITableViewController {
                             self.currentTempList.append(res.current.temp_c)
                             self.maxTempList.append(res.forecast.forecastday[0].day.maxtemp_c)
                             self.minTempList.append(res.forecast.forecastday[0].day.mintemp_c)
+                            self.backgroundWeather.append(res.current.condition.text)
                         } catch let error {
                             print("erooooor pour ", city)
                             print(error)
@@ -132,14 +135,44 @@ class SearchTableViewController: UITableViewController {
         print(cityList)
         print(currentTempList)
         print(minTempList)
+        print(backgroundWeather)
         let city = self.cityList[indexPath.row]
-        if (self.minTempList.count > 0 && self.maxTempList.count > 0 && self.currentTempList.count > 0) {
+        if (self.minTempList.count > 0 && self.maxTempList.count > 0 && self.currentTempList.count > 0 && self.backgroundWeather.count > 0) {
             let minTemp = self.minTempList[indexPath.row]
             let maxTemp = self.maxTempList[indexPath.row]
             let currentTemp = self.currentTempList[indexPath.row]
+            let background = self.backgroundWeather[indexPath.row]
             cell.minTempLabel.text = String(format: "%.1f", minTemp)
             cell.maxTempLabel.text = String(format: "%.1f", maxTemp)
             cell.cityWeatherLabel.text = String(format: "%.1f", currentTemp)
+            
+            let weatherCondition = background.lowercased() // Replace with the actual weather condition text
+
+            print(background)
+            switch weatherCondition {
+            case "Clear".lowercased(), "Sunny".lowercased():
+                cell.backgroundImage.image = UIImage(named: "clear")
+            case "Partly cloudy".lowercased(), "Mostly Clear".lowercased():
+                cell.backgroundImage.image = UIImage(named: "partly-cloudy")
+            case "Cloudy".lowercased():
+                cell.backgroundImage.image = UIImage(named: "clouds")
+            case "Rain".lowercased(), "Showers".lowercased():
+                cell.backgroundImage.image = UIImage(named: "rainy")
+            case "Snow".lowercased(), "Snow Showers".lowercased():
+                cell.backgroundImage.image = UIImage(named: "snow")
+            case "Thunderstorm".lowercased(), "Storm".lowercased():
+                cell.backgroundImage.image = UIImage(named: "storm")
+            case "Fog".lowercased(), "Mist".lowercased():
+                cell.backgroundImage.image = UIImage(named: "fog")
+            case "Windy".lowercased():
+                //cell.backgroundImage.image = UIImage(named: "clear")
+                break
+            case "Haze".lowercased(), "Smoke".lowercased():
+                cell.backgroundImage.image = UIImage(named: "fog")
+            default:
+                print("Weather condition not recognized.")
+            }
+            
             print("***************")
             print(self.cityList)
             print(cell.cityLabel.text)
@@ -170,6 +203,7 @@ class SearchTableViewController: UITableViewController {
                         self.currentTempList.append(res.current.temp_c)
                         self.maxTempList.append(res.forecast.forecastday[0].day.maxtemp_c)
                         self.minTempList.append(res.forecast.forecastday[0].day.mintemp_c)
+                        self.backgroundWeather.append(res.current.condition.text)
                         
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
