@@ -9,12 +9,33 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
+    @IBOutlet weak var pressionView: UIView!
+    @IBOutlet weak var windView: UIView!
+    @IBOutlet weak var humidityView: UIView!
+    @IBOutlet weak var uvView: UIView!
+    @IBOutlet weak var precipitationView: UIView!
+    
+    @IBOutlet weak var visibilityView: UIView!
+    @IBOutlet weak var cloudsView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        applyBorderAndCornerRadius(to: pressionView)
+        applyBorderAndCornerRadius(to: windView)
+        applyBorderAndCornerRadius(to: humidityView)
+        applyBorderAndCornerRadius(to: uvView)
+        applyBorderAndCornerRadius(to: precipitationView)
+        applyBorderAndCornerRadius(to: cloudsView)
+        applyBorderAndCornerRadius(to: visibilityView)
         // Do any additional setup after loading the view.
     }
     
+    func applyBorderAndCornerRadius(to view: UIView) {
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor.gray.cgColor
+        view.layer.cornerRadius = 10
+    }
+
 
     /*
     // MARK: - Navigation
