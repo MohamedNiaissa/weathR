@@ -17,7 +17,6 @@ class DaysWeatherCell: UITableViewCell{
     @IBOutlet weak var weekCell: UIView!
     
 
-    
 }
 
 
@@ -257,12 +256,13 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     @IBAction func astronomyButtonTouch(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "astronomy") as? AstronomyViewController {
             vc.city = "Dreux"
-
+    
+                vc.modalPresentationStyle = .fullScreen
             // Afficher un modal
-            //self.present(vc, animated: true, completion: nil)
+            self.present(vc, animated: true, completion: nil)
             
             // Afficher un push navigation
-            self.navigationController?.pushViewController(vc, animated: true)
+//            self.navigationController?.pushViewController(vc, animated: true)
             
         }
     }
@@ -272,13 +272,13 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "details") as? DetailsViewController {
                 vc.city = "New York"
 
-                
+                    vc.modalPresentationStyle = .fullScreen
                 // Afficher un modal
-                //self.present(vc, animated: true, completion: nil)
+                self.present(vc, animated: true, completion: nil)
                 
                 // Afficher un push navigation
-                self.navigationController?.pushViewController(vc, animated: true)
-                
+//                self.navigationController?.pushViewController(vc, animated: true)
+//                
             }
     }
 }

@@ -82,7 +82,11 @@ class DetailsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-        
+    @IBAction func closeTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     func applyBorderAndCornerRadius(to view: UIView) {
         view.layer.borderWidth = 2
         view.layer.borderColor = UIColor.gray.cgColor
