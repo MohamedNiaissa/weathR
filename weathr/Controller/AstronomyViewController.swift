@@ -27,6 +27,10 @@ class AstronomyViewController: UIViewController {
     @IBOutlet weak var isSunUpLabel: UILabel!
     @IBOutlet weak var isMoonDownLabel: UILabel!
     
+    @IBOutlet weak var moonsetImage: UIImageView!
+    @IBOutlet weak var moonriseImage: UIImageView!
+    @IBOutlet weak var sunsetImage: UIImageView!
+    @IBOutlet weak var sunriseImage: UIImageView!
     //var city = "Dreux"
     
     var city: String?
@@ -38,10 +42,10 @@ class AstronomyViewController: UIViewController {
         super.viewDidLoad()
         
         
-        applyBorderAndCornerRadius(to: sunriseView)
-        applyBorderAndCornerRadius(to: moonriseView)
-        applyBorderAndCornerRadius(to: moonsetView)
-        applyBorderAndCornerRadius(to: sunsetView)
+        applyBorderAndCornerRadius(to: sunriseImage)
+        applyBorderAndCornerRadius(to: moonriseImage)
+        applyBorderAndCornerRadius(to: moonsetImage)
+        applyBorderAndCornerRadius(to: sunsetImage)
         applyBorderAndCornerRadius(to: sunUpView)
         applyBorderAndCornerRadius(to: moonDownView)
         
@@ -59,7 +63,7 @@ class AstronomyViewController: UIViewController {
                             self.moonsetLabel.text = res.astronomy.astro.moonset
                             self.moonPhaseLabel.text = res.astronomy.astro.moon_phase
                             self.isSunUpLabel.text = res.astronomy.astro.is_sun_up == 0 ? "Sun up" : "Sun Down"
-                            self.isMoonDownLabel.text = res.astronomy.astro.is_moon_up == 0 ? "Moon up" : "Moon"
+                            self.isMoonDownLabel.text = res.astronomy.astro.is_moon_up == 0 ? "Moon up" : "Moon Down"
                            }
                     
                     } catch let error {
@@ -72,8 +76,6 @@ class AstronomyViewController: UIViewController {
         }
         
         func applyBorderAndCornerRadius(to view: UIView) {
-            view.layer.borderWidth = 2
-            view.layer.borderColor = UIColor.gray.cgColor
             view.layer.cornerRadius = 10
         }
         
