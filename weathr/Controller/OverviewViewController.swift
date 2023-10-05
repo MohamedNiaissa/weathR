@@ -47,7 +47,11 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        if let tabBar = self.tabBarController?.tabBar {
+            tabBar.backgroundColor = .quaternaryLabel
+                }
+        
+        
         self.weekTableView.dataSource = self
         self.weekTableView.delegate = self
 

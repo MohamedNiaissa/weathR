@@ -457,7 +457,7 @@
                                         <viewLayoutGuide key="frameLayoutGuide" id="JaY-qM-rrE"/>
                                     </scrollView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dWq-Iw-LAb">
-                                        <rect key="frame" x="20" y="300" width="353" height="500"/>
+                                        <rect key="frame" x="20" y="300" width="353" height="510"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="353" id="crG-AS-OaF"/>
@@ -558,7 +558,7 @@
                                     <constraint firstItem="dWq-Iw-LAb" firstAttribute="top" secondItem="vke-KG-nFd" secondAttribute="bottom" constant="40" id="jAf-Sb-o24"/>
                                     <constraint firstItem="vke-KG-nFd" firstAttribute="trailing" secondItem="jKC-Sb-dvd" secondAttribute="trailing" id="mWt-4B-PEs"/>
                                     <constraint firstItem="dWq-Iw-LAb" firstAttribute="centerX" secondItem="jKC-Sb-dvd" secondAttribute="centerX" id="q1v-Cy-ILQ"/>
-                                    <constraint firstItem="dWq-Iw-LAb" firstAttribute="bottom" secondItem="jKC-Sb-dvd" secondAttribute="bottom" id="yzl-Gr-fE8"/>
+                                    <constraint firstItem="dWq-Iw-LAb" firstAttribute="bottom" secondItem="jKC-Sb-dvd" secondAttribute="bottom" constant="10" id="yzl-Gr-fE8"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="KZa-Rh-uyI"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="XJW-9l-pTj"/>
