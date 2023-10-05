@@ -272,12 +272,20 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cloudsLabel" destination="dVg-zH-twX" id="tyl-kQ-x2a"/>
                         <outlet property="cloudsView" destination="uT4-4D-aL7" id="UuN-MB-gSb"/>
+                        <outlet property="humidityLabel" destination="NmW-kE-f9c" id="cQg-VZ-4VE"/>
                         <outlet property="humidityView" destination="t4U-6Q-oQT" id="4Vs-9W-yIJ"/>
+                        <outlet property="precipitationLabel" destination="3av-Hv-YIK" id="sC7-3k-27s"/>
                         <outlet property="precipitationView" destination="VtR-ie-bnd" id="0cf-fq-AxY"/>
                         <outlet property="pressionView" destination="yKk-h9-KmD" id="ixN-dO-kn7"/>
+                        <outlet property="pressureLabel" destination="8RK-i7-Ek1" id="dHy-Vf-BYi"/>
+                        <outlet property="uvLabel" destination="IOD-zq-Rag" id="2VM-N3-y7g"/>
                         <outlet property="uvView" destination="wel-vq-u29" id="2r8-Vo-HLI"/>
+                        <outlet property="visibilityLabel" destination="F4B-ym-4yL" id="JCM-BB-Mdj"/>
                         <outlet property="visibilityView" destination="L2X-9w-hwL" id="58W-Bh-94Z"/>
+                        <outlet property="winSpeedLabel" destination="hkf-S8-j6r" id="zJk-Dw-UBY"/>
+                        <outlet property="windOrientationLabel" destination="6Ly-xf-4Oj" id="PKy-63-O1G"/>
                         <outlet property="windView" destination="kmN-LM-tG2" id="JcL-aq-kmM"/>
                     </connections>
                 </viewController>

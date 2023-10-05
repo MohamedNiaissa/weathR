@@ -8,19 +8,6 @@
 import UIKit
 
 
-struct Astro: Codable {
-    let sunrise: String
-    let sunset: String
-    let moonrise: String
-    let moonset: String
-    let moon_phase: String
-    let is_moon_up: Int
-    let is_sun_up: Int
-}
-
-
-
-
 
 class AstronomyViewController: UIViewController {
     

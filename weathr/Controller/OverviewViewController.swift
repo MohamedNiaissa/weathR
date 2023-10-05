@@ -60,6 +60,8 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func goToDetails() {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "details") as? DetailsViewController {
+            vc.city = "New York"
+
             
             // Afficher un modal
             //self.present(vc, animated: true, completion: nil)
