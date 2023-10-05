@@ -63,7 +63,15 @@ class HourTableViewController: UITableViewController {
                         for hourElement in hourArray {
                             self.hours.append(hourElement.time)
                             self.temperatures.append(String(hourElement.temp_c) + "°")
-                            self.weatherIcons.append(hourElement.condition.icon)
+                            let icon = hourElement.condition.icon
+                            
+                            let lal = "sdqds"
+                            
+                            if let lastPathComponent = hourElement.condition.icon.components(separatedBy: "/").last {
+                                if let result = lastPathComponent.components(separatedBy: ".").first {
+                                    self.weatherIcons.append(result)
+                                }
+                            }
                         }
                     } catch let error {
                         print(error)
@@ -98,12 +106,14 @@ class HourTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourReuseIdentifier", for: indexPath)as!HourCustomCell
 
-
         let hour = self.hours[indexPath.row]
         let hourTemp = self.temperatures[indexPath.row]
+        let hourIcon = self.weatherIcons[indexPath.row]
         cell.hourLabel.text = hour
         cell.hourTempLabel.text = hourTemp
+        cell.iconHourLabel.image = UIImage(named: hourIcon)
 
+        
         
 
         return cell
