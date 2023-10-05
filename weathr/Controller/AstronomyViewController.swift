@@ -7,14 +7,6 @@
 
 import UIKit
 
-struct Astronomy: Codable {
-    let astronomy: AstroData
-}
-
-struct AstroData: Codable {
-    let astro: Astro
-    
-}
 
 struct Astro: Codable {
     let sunrise: String
