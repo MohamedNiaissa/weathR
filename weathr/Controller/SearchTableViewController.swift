@@ -117,10 +117,6 @@ class SearchTableViewController: UITableViewController {
                 print("Weather condition not recognized.")
             }
             
-            print("***************")
-            print(self.cityList)
-            print(cell.cityLabel.text)
-            print("***************")
         }
         // Configure the cell...
         

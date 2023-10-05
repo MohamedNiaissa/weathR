@@ -30,7 +30,8 @@ struct ForecastHourCondition : Codable {
 }
 
 class HourCustomCell : UITableViewCell  {
-    @IBOutlet weak var hourLabel: UIView!
+    
+    @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var hourTempLabel: UILabel!
     @IBOutlet weak var iconHourLabel: UIImageView!
 }
@@ -41,7 +42,7 @@ class HourTableViewController: UITableViewController {
     var hours = [String]()
     var temperatures = [String]()
     var weatherIcons = [String]()
-    
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,19 +88,27 @@ class HourTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+      
+        
+        return self.hours.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hourReuseIdentifier", for: indexPath)as!HourCustomCell
 
-        // Configure the cell...
+
+        let hour = self.hours[indexPath.row]
+        let hourTemp = self.temperatures[indexPath.row]
+        cell.hourLabel.text = hour
+        cell.hourTempLabel.text = hourTemp
+
+        
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

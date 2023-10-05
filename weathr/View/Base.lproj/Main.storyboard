@@ -342,9 +342,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="hourLabel" destination="A8r-oc-I2w" id="Kay-jb-tEk"/>
-                                    <outlet property="hourTempLabel" destination="p1W-Tb-ujc" id="VN1-Ap-f2a"/>
-                                    <outlet property="iconHourLabel" destination="lKW-ru-9cj" id="m6z-bf-YDD"/>
+                                    <outlet property="hourLabel" destination="MFz-ev-EO0" id="8xc-yU-zB5"/>
+                                    <outlet property="hourTempLabel" destination="p1W-Tb-ujc" id="qed-PS-tsN"/>
+                                    <outlet property="iconHourLabel" destination="lKW-ru-9cj" id="CiP-cv-jrb"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
