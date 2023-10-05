@@ -7,10 +7,20 @@
 
 import UIKit
 
+class DaysWeatherCell: UITableViewCell{
+    @IBOutlet weak var maxTempLabel: NSLayoutConstraint!
+    @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var dayIconImage: UIImageView!
+    @IBOutlet weak var nightIconImage: UIImageView!
+    @IBOutlet weak var dayLabel: UILabel!
+    
+    
+}
 
 
 class OverviewViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var weekStackView: UIStackView!
     @IBOutlet weak var scrollview: UIScrollView!
     
     @IBOutlet weak var horizontalHourStackView: UIStackView!
@@ -28,6 +38,8 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
     var city : String?
     
     let hours = ["11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
+    let week = ["Today", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +47,8 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
         if city == nil {
             city = "Paris"
         }
+        
+        
         
     
         let item1 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action:  #selector(self.goToAstronomy))
@@ -84,6 +98,10 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
             }.resume()
         
         }
+        
+        
+        
+        // MARK: - Scroll Horizontal Hours
     
         for i in 1...hours.count {
             
@@ -120,7 +138,51 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
         
         horizontalHourStackView.layer.cornerRadius = 10
         
+        // MARK: - StackView Week
         
+        for i in 1...week.count{
+            print(week[i-1])
+            
+            //Create view
+            let newView = UIView()
+            newView.backgroundColor = .red
+            
+            //Create Day Label
+            let day = UILabel()
+            day.text = "week[i-1]"
+            day.center = CGPoint(x: 160, y: 285)
+            day.textColor = .black
+           
+            
+
+            
+            //Create Day Icon
+            let dayIcon = UIImageView()
+            dayIcon.image = UIImage(named: "116.png")
+            
+            //Create Night Icon
+            let nightIcon = UIImageView()
+            nightIcon.image = UIImage(named: "113.png")
+            
+            //Create minTemp Label
+            let minTemp = UILabel()
+            minTemp.text = "9°"
+            
+            //Create maxTemp Label
+            let maxTemp = UILabel()
+            maxTemp.text = "20°"
+            
+            // Put labels and images in the new View
+            newView.addSubview(day)
+//            newView.addSubview(dayIcon)
+//            newView.addSubview(nightIcon)
+//            newView.addSubview(minTemp)
+//            newView.addSubview(maxTemp)
+            
+            //Put the new View in the current StackView
+            
+            
+        }
     }
     
     
