@@ -14,6 +14,7 @@
 		A8D1CE912ACD96A800A7E594 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D1CE902ACD96A800A7E594 /* SearchTableViewController.swift */; };
 		B125B39E2ACDF731000EF29B /* searchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125B39D2ACDF731000EF29B /* searchViewModel.swift */; };
 		B16B1DD12ACE351F00B6A70D /* astronomyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16B1DD02ACE351F00B6A70D /* astronomyModel.swift */; };
+		B16B1DD32ACE3E1100B6A70D /* detailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16B1DD22ACE3E1100B6A70D /* detailsModel.swift */; };
 		B174E5612ACC5E4A00955ACA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B174E5602ACC5E4A00955ACA /* AppDelegate.swift */; };
 		B174E5632ACC5E4A00955ACA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B174E5622ACC5E4A00955ACA /* SceneDelegate.swift */; };
 		B174E5682ACC5E4A00955ACA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B174E5662ACC5E4A00955ACA /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		A8D1CE902ACD96A800A7E594 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		B125B39D2ACDF731000EF29B /* searchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchViewModel.swift; sourceTree = "<group>"; };
 		B16B1DD02ACE351F00B6A70D /* astronomyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = astronomyModel.swift; sourceTree = "<group>"; };
+		B16B1DD22ACE3E1100B6A70D /* detailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailsModel.swift; sourceTree = "<group>"; };
 		B174E55D2ACC5E4A00955ACA /* weathr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weathr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B174E5602ACC5E4A00955ACA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B174E5622ACC5E4A00955ACA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				B125B39D2ACDF731000EF29B /* searchViewModel.swift */,
 				B16B1DD02ACE351F00B6A70D /* astronomyModel.swift */,
+				B16B1DD22ACE3E1100B6A70D /* detailsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				A8D1CE912ACD96A800A7E594 /* SearchTableViewController.swift in Sources */,
 				A83850FE2ACD4C25006FD670 /* OverviewViewController.swift in Sources */,
 				B174E5632ACC5E4A00955ACA /* SceneDelegate.swift in Sources */,
+				B16B1DD32ACE3E1100B6A70D /* detailsModel.swift in Sources */,
 				A83850FA2ACD4BA7006FD670 /* AstronomyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

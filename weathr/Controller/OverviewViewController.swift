@@ -11,6 +11,8 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var scrollview: UIScrollView!
     
+    @IBOutlet weak var horizontalHourStackView: UIStackView!
+    @IBOutlet weak var hourScrollView: UIScrollView!
     @IBOutlet weak var weatherImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +25,26 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
         self.navigationItem.rightBarButtonItems = [item1, item2]
         
         scrollview.delegate = self
-        scrollview.isDirectionalLockEnabled = true
+        scrollview.isDirectionalLockEnabled = true 
+        hourScrollView.delegate = self
+        hourScrollView.isDirectionalLockEnabled = true
+        hourScrollView.contentOffset.y = 0
+        //hourScrollView.isScrollEnabled = false
+        
+
+
+
+
 //        self.weatherImage.image = UIImage()
     }
-    
+    func hourScrollViewDidScroll(_ scrollView: UIScrollView) {
+        //if scrollview.contentOffset.x>0 {
+           hourScrollView.contentOffset.y = 0
+       // }
+    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //if scrollview.contentOffset.x>0 {
-//           scrollview.contentOffset.x = 0
+           scrollview.contentOffset.x = 0
        // }
     }
     

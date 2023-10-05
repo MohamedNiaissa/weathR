@@ -386,10 +386,10 @@
                                             <constraint firstAttribute="height" constant="800" id="El7-M9-X7q"/>
                                         </constraints>
                                     </view>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vke-KG-nFd">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="225"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vke-KG-nFd">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="230"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="center" fixedFrame="YES" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="68X-pc-aQV">
+                                            <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="68X-pc-aQV">
                                                 <rect key="frame" x="0.0" y="0.0" width="492" height="230"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Xg4-W3-JFV">
@@ -508,14 +508,17 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="590" id="a1Y-Ba-aJK"/>
-                                            <constraint firstAttribute="height" constant="225" id="drs-Ru-PkV"/>
+                                            <constraint firstAttribute="bottom" secondItem="68X-pc-aQV" secondAttribute="bottom" id="WpE-8E-pzp"/>
+                                            <constraint firstItem="68X-pc-aQV" firstAttribute="leading" secondItem="vke-KG-nFd" secondAttribute="leading" id="ZXp-zA-tdd"/>
+                                            <constraint firstAttribute="trailing" secondItem="68X-pc-aQV" secondAttribute="trailing" id="cyh-bM-yFk"/>
+                                            <constraint firstAttribute="width" secondItem="68X-pc-aQV" secondAttribute="width" multiplier="0.79878" id="m3b-0f-VGC"/>
+                                            <constraint firstItem="68X-pc-aQV" firstAttribute="top" secondItem="vke-KG-nFd" secondAttribute="top" id="nXl-2L-X6H"/>
                                         </constraints>
                                         <viewLayoutGuide key="contentLayoutGuide" id="Q6E-wK-PVq"/>
                                         <viewLayoutGuide key="frameLayoutGuide" id="JaY-qM-rrE"/>
                                     </scrollView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="hqs-mo-fRY">
-                                        <rect key="frame" x="-1" y="254.99999999999994" width="394" height="448.00000000000006"/>
+                                        <rect key="frame" x="-1" y="264.99999999999994" width="394" height="448.00000000000006"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jIH-Df-lE8">
                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="64"/>
@@ -907,14 +910,16 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="hqs-mo-fRY" firstAttribute="leading" secondItem="c8A-rb-MjR" secondAttribute="leading" id="53K-fl-Qum"/>
-                                    <constraint firstItem="vke-KG-nFd" firstAttribute="leading" secondItem="hqs-mo-fRY" secondAttribute="trailing" constant="10" id="5j3-qQ-OdK"/>
                                     <constraint firstAttribute="bottom" secondItem="jKC-Sb-dvd" secondAttribute="bottom" id="89v-zV-xki"/>
+                                    <constraint firstItem="jKC-Sb-dvd" firstAttribute="top" secondItem="vke-KG-nFd" secondAttribute="bottom" constant="-230" id="9TC-CI-MYW"/>
                                     <constraint firstItem="jKC-Sb-dvd" firstAttribute="centerX" secondItem="c8A-rb-MjR" secondAttribute="centerX" id="F9S-vK-m6y"/>
                                     <constraint firstItem="jKC-Sb-dvd" firstAttribute="leading" secondItem="c8A-rb-MjR" secondAttribute="leading" id="NIn-ew-teN"/>
+                                    <constraint firstItem="vke-KG-nFd" firstAttribute="top" secondItem="jKC-Sb-dvd" secondAttribute="top" id="dPX-jN-Xzb"/>
+                                    <constraint firstItem="vke-KG-nFd" firstAttribute="leading" secondItem="jKC-Sb-dvd" secondAttribute="leading" id="dVn-gL-hb4"/>
                                     <constraint firstItem="jKC-Sb-dvd" firstAttribute="top" secondItem="c8A-rb-MjR" secondAttribute="top" id="esg-h3-GL9"/>
+                                    <constraint firstItem="hqs-mo-fRY" firstAttribute="top" secondItem="vke-KG-nFd" secondAttribute="bottom" constant="35" id="g17-qn-il0"/>
                                     <constraint firstAttribute="trailing" secondItem="jKC-Sb-dvd" secondAttribute="trailing" id="iwp-uF-QBI"/>
-                                    <constraint firstItem="vke-KG-nFd" firstAttribute="top" secondItem="jKC-Sb-dvd" secondAttribute="top" id="j4z-aS-rII"/>
-                                    <constraint firstItem="hqs-mo-fRY" firstAttribute="top" secondItem="vke-KG-nFd" secondAttribute="bottom" constant="30" id="yRB-k8-kWP"/>
+                                    <constraint firstItem="vke-KG-nFd" firstAttribute="trailing" secondItem="jKC-Sb-dvd" secondAttribute="trailing" id="mWt-4B-PEs"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="KZa-Rh-uyI"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="XJW-9l-pTj"/>
@@ -948,6 +953,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="7SZ-bS-9tC"/>
                     <connections>
+                        <outlet property="horizontalHourStackView" destination="68X-pc-aQV" id="16h-xw-rFI"/>
+                        <outlet property="hourScrollView" destination="vke-KG-nFd" id="YWI-o6-2NK"/>
                         <outlet property="scrollview" destination="c8A-rb-MjR" id="AJT-Gh-DCH"/>
                     </connections>
                 </viewController>
