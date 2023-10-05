@@ -57,7 +57,7 @@ class SearchTableViewController: UITableViewController {
                         }
                     }
                 }.resume()
-                
+            
             }
             
            print("lààààààà")
