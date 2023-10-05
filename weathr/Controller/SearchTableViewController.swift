@@ -134,12 +134,18 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "overviewId") as? OverviewViewController {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "overviewID") as? OverviewViewController {
             vc.city = self.cityList[indexPath.row]
             
             
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+            // Afficher un modal
+            //self.present(vc, animated: true, completion: nil)
+            
+            // Afficher un push navigation
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            //vc.modalPresentationStyle = .fullScreen
+            //self.present(vc, animated: true, completion: nil)
         }
         
     }

@@ -66,7 +66,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
         
         
         
-        if let url = URL(string: "http://api.weatherapi.com/v1/forecast.json?key=713f0909ad20490ca9d80112230310&q="+city) {
+        if let url = URL(string: "http://api.weatherapi.com/v1/forecast.json?key=713f0909ad20490ca9d80112230310&q="+city!) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     do {
