@@ -88,4 +88,7 @@ class AstronomyViewController: UIViewController {
          */
         
     }
+    @IBAction func closeTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
