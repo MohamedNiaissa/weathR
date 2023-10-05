@@ -66,7 +66,6 @@ class HourTableViewController: UITableViewController {
                             self.temperatures.append(String(hourElement.temp_c) + "°")
                             let icon = hourElement.condition.icon
                             
-                            let lal = "sdqds"
                             
                             if let lastPathComponent = hourElement.condition.icon.components(separatedBy: "/").last {
                                 if let result = lastPathComponent.components(separatedBy: ".").first {

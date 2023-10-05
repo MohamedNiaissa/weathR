@@ -40,7 +40,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     
     var city : String?
     
-    let hours = ["11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
+    let hours = ["05:00", "08:00", "11:00", "14:00", "17:00", "20:00", "23:00"]
     let week = ["Today", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
     
     
@@ -93,29 +93,44 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                             self.feelingLabel.text = String(res.current.feelslike_c) + "°"
                             
                             self.messageTemp.text = String(res.forecast.forecastday[0].day.condition.text)
-                            
+                        
                             for i in 1...self.hours.count {
                                 
-                                       
                                 //Create newStackView
-                                       let newStackView = UIStackView()
-                                       newStackView.axis = .vertical
-                                       newStackView.distribution = .fillEqually
-                                       newStackView.alignment = .center
-                                       newStackView.spacing = 5
+                                let newStackView = UIStackView()
+                                newStackView.axis = .vertical
+                                newStackView.distribution = .fillEqually
+                                newStackView.alignment = .center
+                                newStackView.spacing = 5
                                 
                                 //Create hour label
-                                       let hourLabel = UILabel()
+                                let hourLabel = UILabel()
                                 hourLabel.text = self.hours[i-1]
-                                       hourLabel.textColor = .black
+                                hourLabel.textColor = .black
                                 
                                 //Create temperature label
-                                       let tempLabel = UILabel()
-                                       tempLabel.text = "17°"
+                                let tempLabel = UILabel()
                                 
-                                //Create Weather icon
-                                       let weatherImage = UIImageView()
-                                       weatherImage.image = UIImage(named: "113.png")
+                                tempLabel.text = "17°"
+                                let weatherImage = UIImageView()
+                                   
+                                   for elem in res.forecast.forecastday[0].hour {
+                                       let timeStr = elem.time[elem.time.range(of: " ")!.upperBound...]
+                                       
+                                       if (timeStr == self.hours[i-1]) {
+                                           tempLabel.text = String(elem.temp_c) + "°"
+                                           
+                                           //Create Weather Icon
+                                           if let lastPathComponent = elem.condition.icon.components(separatedBy: "/").last {
+                                               if let result = lastPathComponent.components(separatedBy: ".").first {
+                                                   weatherImage.image = UIImage(named: result + ".png")
+                                               }
+                                           }
+                                       }
+                                   }
+                                       
+                                
+                               
                                        
                                 // Put labels and image in the new stackView
                                        newStackView.addArrangedSubview(hourLabel)
@@ -255,7 +270,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     
     @objc func goToAstronomy() {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "astronomy") as? AstronomyViewController {
-            vc.city = "Dreux"
+            vc.city = city
 
             // Afficher un modal
             //self.present(vc, animated: true, completion: nil)
@@ -268,7 +283,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     
     @objc func goToDetails() {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "details") as? DetailsViewController {
-            vc.city = "New York"
+            vc.city = city
 
             
             // Afficher un modal
