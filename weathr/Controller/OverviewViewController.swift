@@ -22,11 +22,17 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var feelingLabel: UILabel!
     @IBOutlet weak var messageTemp: UILabel!
     
+    @IBOutlet weak var arrowForDetailshours: UIButton!
+    @IBOutlet weak var hoursStackView: UIStackView!
     
     var city : String = "Paris"
     
+    let hours = ["11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     
         let item1 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action:  #selector(self.goToAstronomy))
         
@@ -76,6 +82,39 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
         
         }
     
+        for i in 1...hours.count {
+            
+                   
+            //Create newStackView
+                   let newStackView = UIStackView()
+                   newStackView.axis = .vertical
+                   newStackView.distribution = .fillEqually
+                   newStackView.alignment = .center
+                   newStackView.spacing = 10
+            
+            //Create hour label
+                   let hourLabel = UILabel()
+                   hourLabel.text = hours[i-1]
+                   hourLabel.textColor = .black
+            
+            //Create temperature label
+                   let tempLabel = UILabel()
+                   tempLabel.text = "17°"
+            
+            //Create Weather icon
+                   let weatherImage = UIImageView()
+                   weatherImage.image = UIImage(named: "113.png")
+                   
+            // Put labels and image in the new stackView
+                   newStackView.addArrangedSubview(hourLabel)
+                   newStackView.addArrangedSubview(tempLabel)
+                   newStackView.addArrangedSubview(weatherImage)
+                   
+            //Put the new StackView in the current StackView horizonal
+            hoursStackView.insertArrangedSubview(newStackView, at: i-1)
+                  
+               }
+        
     }
     
     
