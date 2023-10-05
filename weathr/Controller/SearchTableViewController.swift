@@ -31,36 +31,23 @@ class SearchTableViewController: UITableViewController {
         let config = URLSessionConfiguration.default
         
         for city in cityList {
-            print("EEEEEEEE")
-            print(cityList)
-            print(city)
-            print("EEEEEEEE")
             if let url = URL(string: "http://api.weatherapi.com/v1/forecast.json?key=713f0909ad20490ca9d80112230310&q="+city) {
                 URLSession.shared.dataTask(with: url) { data, response, error in
                     if let data = data {
                         do {
                             let res = try JSONDecoder().decode(Weather.self, from: data)
-                            print("^^^^^^^^^^^^^^^^^^^^")
-                            print(city)
-                            print(res.current.temp_c)
-                            print(res.forecast.forecastday[0].day.maxtemp_c)
-                            print(res.forecast.forecastday[0].day.mintemp_c)
-                            print("^^^^^^^^^^^^^^^^^^^^")
                             self.currentTempList.append(res.current.temp_c)
                             self.maxTempList.append(res.forecast.forecastday[0].day.maxtemp_c)
                             self.minTempList.append(res.forecast.forecastday[0].day.mintemp_c)
                             self.backgroundWeather.append(res.current.condition.text)
                         } catch let error {
-                            print("erooooor pour ", city)
                             print(error)
-                            print("erooooor")
                         }
                     }
                 }.resume()
             
             }
             
-           print("lààààààà")
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()

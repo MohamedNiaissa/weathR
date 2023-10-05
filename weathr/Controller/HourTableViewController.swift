@@ -7,8 +7,36 @@
 
 import UIKit
 
+struct HourWeather : Codable {
+    let forecast : HourForcast
+}
+
+struct HourForcast : Codable {
+    let forecastday : [HourForcastDay]
+}
+
+struct HourForcastDay : Codable {
+    let hour : [InfoHourForcastHours]
+}
+
+struct InfoHourForcastHours : Codable {
+    let time : String
+    let temp_c : Double
+    let condition : ForecastHourCondition
+}
+
+struct ForecastHourCondition : Codable {
+    let icon : String
+}
+
 class HourTableViewController: UITableViewController {
 
+    var city : String?
+    var hours = [String]()
+    var temperatures = [String]()
+    var weatherIcons = [String]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,13 +45,37 @@ class HourTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        if let url = URL(string: "http://api.weatherapi.com/v1/forecast.json?key=713f0909ad20490ca9d80112230310&q="+city!) {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data {
+                    do {
+                        let res = try JSONDecoder().decode(HourWeather.self, from: data)
+                        let hourArray = res.forecast.forecastday[0].hour
+                        
+                        
+                        
+                        print(hourArray)
+                    } catch let error {
+                        print(error)
+                    }
+                }
+            }.resume()
+        
+        }
+        
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
