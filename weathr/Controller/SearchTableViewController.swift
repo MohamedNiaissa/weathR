@@ -97,30 +97,30 @@ class SearchTableViewController: UITableViewController {
             let weatherCondition = background.lowercased()
 
             switch weatherCondition {
-            case "Clear".lowercased(), "Sunny".lowercased():
-                cell.backgroundImage.image = UIImage(named: "clear")
-            case "Partly cloudy".lowercased(), "Mostly Clear".lowercased():
-                cell.backgroundImage.image = UIImage(named: "partly-cloudy")
-            case "Cloudy".lowercased():
-                cell.backgroundImage.image = UIImage(named: "clouds")
-            case "Rain".lowercased(), "Showers".lowercased():
-                cell.backgroundImage.image = UIImage(named: "rainy")
-            case "Snow".lowercased(), "Snow Showers".lowercased():
-                cell.backgroundImage.image = UIImage(named: "snow")
-            case "Thunderstorm".lowercased(), "Storm".lowercased():
-                cell.backgroundImage.image = UIImage(named: "storm")
-            case "Fog".lowercased(), "Mist".lowercased():
-                cell.backgroundImage.image = UIImage(named: "fog")
-            case "Windy".lowercased():
-                //cell.backgroundImage.image = UIImage(named: "clear")
-                break
-            case "Haze".lowercased(), "Smoke".lowercased():
-                cell.backgroundImage.image = UIImage(named: "fog")
-            default:
-                print("Weather condition not recognized.")
-            }
+                case "Clear".lowercased(), "Sunny".lowercased():
+                    cell.backgroundImage.image = UIImage(named: "clear")
+                case "Partly cloudy".lowercased(), "Mostly Clear".lowercased():
+                    cell.backgroundImage.image = UIImage(named: "partly-cloudy")
+                case "Cloudy".lowercased():
+                    cell.backgroundImage.image = UIImage(named: "clouds")
+                case "Rain".lowercased(), "Showers".lowercased():
+                    cell.backgroundImage.image = UIImage(named: "rainy")
+                case "Snow".lowercased(), "Snow Showers".lowercased():
+                    cell.backgroundImage.image = UIImage(named: "snow")
+                case "Thunderstorm".lowercased(), "Storm".lowercased():
+                    cell.backgroundImage.image = UIImage(named: "storm")
+                case "Fog".lowercased(), "Mist".lowercased():
+                    cell.backgroundImage.image = UIImage(named: "fog")
+                case "Windy".lowercased():
+                    //cell.backgroundImage.image = UIImage(named: "clear")
+                    break
+                case "Haze".lowercased(), "Smoke".lowercased():
+                    cell.backgroundImage.image = UIImage(named: "fog")
+                default:
+                    print("Weather condition not recognized.")
+                }
             
-        }
+            }
         // Configure the cell...
         
         cell.backgroundImage.layer.cornerRadius = 10
