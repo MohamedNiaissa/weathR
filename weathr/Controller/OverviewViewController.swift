@@ -90,7 +90,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
                    newStackView.axis = .vertical
                    newStackView.distribution = .fillEqually
                    newStackView.alignment = .center
-                   newStackView.spacing = 10
+                   newStackView.spacing = 5
             
             //Create hour label
                    let hourLabel = UILabel()
@@ -111,9 +111,12 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
                    newStackView.addArrangedSubview(weatherImage)
                    
             //Put the new StackView in the current StackView horizonal
-            hoursStackView.insertArrangedSubview(newStackView, at: i-1)
+            horizontalHourStackView.insertArrangedSubview(newStackView, at: i-1)
                   
                }
+        
+        horizontalHourStackView.layer.cornerRadius = 10
+        
         
     }
     
