@@ -29,6 +29,12 @@ struct ForecastHourCondition : Codable {
     let icon : String
 }
 
+class HourCustomCell : UITableViewCell  {
+    @IBOutlet weak var hourLabel: UIView!
+    @IBOutlet weak var hourTempLabel: UILabel!
+    @IBOutlet weak var iconHourLabel: UIImageView!
+}
+
 class HourTableViewController: UITableViewController {
 
     var city : String?
@@ -53,9 +59,11 @@ class HourTableViewController: UITableViewController {
                         let res = try JSONDecoder().decode(HourWeather.self, from: data)
                         let hourArray = res.forecast.forecastday[0].hour
                         
-                        
-                        
-                        print(hourArray)
+                        for hourElement in hourArray {
+                            self.hours.append(hourElement.time)
+                            self.temperatures.append(String(hourElement.temp_c) + "°")
+                            self.weatherIcons.append(hourElement.condition.icon)
+                        }
                     } catch let error {
                         print(error)
                     }

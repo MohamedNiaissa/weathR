@@ -81,12 +81,6 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cityReuseIdentifier", for: indexPath)as!WeatherCityCell
-        
-        print("Je reviens")
-        print(cityList)
-        print(currentTempList)
-        print(minTempList)
-        print(backgroundWeather)
         let city = self.cityList[indexPath.row]
         if (self.minTempList.count > 0 && self.maxTempList.count > 0 && self.currentTempList.count > 0 && self.backgroundWeather.count > 0) {
             let minTemp = self.minTempList[indexPath.row]
@@ -97,9 +91,8 @@ class SearchTableViewController: UITableViewController {
             cell.maxTempLabel.text = String(format: "%.1f", maxTemp)
             cell.cityWeatherLabel.text = String(format: "%.1f", currentTemp)
             
-            let weatherCondition = background.lowercased() // Replace with the actual weather condition text
+            let weatherCondition = background.lowercased()
 
-            print(background)
             switch weatherCondition {
             case "Clear".lowercased(), "Sunny".lowercased():
                 cell.backgroundImage.image = UIImage(named: "clear")

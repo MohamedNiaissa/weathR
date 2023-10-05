@@ -309,7 +309,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hourReuseIdentifier" rowHeight="72" id="pEI-48-tlG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hourReuseIdentifier" rowHeight="72" id="pEI-48-tlG" customClass="HourCustomCell" customModule="weathr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="94" width="393" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pEI-48-tlG" id="A8r-oc-I2w">
@@ -341,6 +341,11 @@
                                         <constraint firstItem="MFz-ev-EO0" firstAttribute="top" secondItem="A8r-oc-I2w" secondAttribute="top" constant="26" id="y6W-YC-1LX"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="hourLabel" destination="A8r-oc-I2w" id="Kay-jb-tEk"/>
+                                    <outlet property="hourTempLabel" destination="p1W-Tb-ujc" id="VN1-Ap-f2a"/>
+                                    <outlet property="iconHourLabel" destination="lKW-ru-9cj" id="m6z-bf-YDD"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
