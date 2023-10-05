@@ -88,8 +88,6 @@ class DetailsViewController: UIViewController {
     
     
     func applyBorderAndCornerRadius(to view: UIView) {
-        view.layer.borderWidth = 2
-        view.layer.borderColor = UIColor.gray.cgColor
         view.layer.cornerRadius = 10
     }
 
