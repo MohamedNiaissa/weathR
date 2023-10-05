@@ -82,7 +82,10 @@ class SearchTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cityReuseIdentifier", for: indexPath)as!WeatherCityCell
         let city = self.cityList[indexPath.row]
-        if (self.minTempList.count > 0 && self.maxTempList.count > 0 && self.currentTempList.count > 0 && self.backgroundWeather.count > 0) {
+        print(minTempList)
+
+        if (self.minTempList.count > 2 && self.maxTempList.count > 2  && self.currentTempList.count > 2 && self.backgroundWeather.count > 2) {
+            print(minTempList)
             let minTemp = self.minTempList[indexPath.row]
             let maxTemp = self.maxTempList[indexPath.row]
             let currentTemp = self.currentTempList[indexPath.row]
@@ -128,6 +131,19 @@ class SearchTableViewController: UITableViewController {
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "overviewId") as? OverviewViewController {
+            vc.city = self.cityList[indexPath.row]
+            
+            
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+    }
+    
     func findDataWithCity(city: String) {
         
         if let url = URL(string: "http://api.weatherapi.com/v1/forecast.json?key=713f0909ad20490ca9d80112230310&q="+city) {
@@ -156,7 +172,7 @@ class SearchTableViewController: UITableViewController {
             }.resume()
             
         }
-        
+     
         
         /*
          // Override to support conditional editing of the table view.

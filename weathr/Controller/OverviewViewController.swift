@@ -25,13 +25,16 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var arrowForDetailshours: UIButton!
     @IBOutlet weak var hoursStackView: UIStackView!
     
-    var city : String = "Paris"
+    var city : String?
     
     let hours = ["11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if city == nil {
+            city = "Paris"
+        }
         
     
         let item1 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action:  #selector(self.goToAstronomy))

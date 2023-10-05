@@ -30,7 +30,6 @@ struct ForecastHourCondition : Codable {
 }
 
 class HourCustomCell : UITableViewCell  {
-    
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var hourTempLabel: UILabel!
     @IBOutlet weak var iconHourLabel: UIImageView!
@@ -46,6 +45,8 @@ class HourTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("in")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -97,8 +98,6 @@ class HourTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-      
-        
         return self.hours.count
     }
 
@@ -106,16 +105,24 @@ class HourTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourReuseIdentifier", for: indexPath)as!HourCustomCell
 
+        //print("in")
         let hour = self.hours[indexPath.row]
         let hourTemp = self.temperatures[indexPath.row]
         let hourIcon = self.weatherIcons[indexPath.row]
-        cell.hourLabel.text = hour
+        
+        
+        
+        //print(hour)
+        if let range = hour.range(of: " ") {
+            let timeStr = hour[range.upperBound...]
+            cell.hourLabel.text = String(timeStr)
+        }
+        
+        
         cell.hourTempLabel.text = hourTemp
-        cell.iconHourLabel.image = UIImage(named: hourIcon)
-
+        cell.iconHourLabel.image = UIImage.init(named: hourIcon)
         
-        
-
+        print(hourTemp)
         return cell
     }
     
