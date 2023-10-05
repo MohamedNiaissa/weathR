@@ -14,13 +14,16 @@ class DaysWeatherCell: UITableViewCell{
     @IBOutlet weak var nightIconImage: UIImageView!
     @IBOutlet weak var dayLabel: UILabel!
     
+    @IBOutlet weak var weekCell: UIView!
+    
+
     
 }
 
 
-class OverviewViewController: UIViewController, UIScrollViewDelegate {
+class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet weak var weekStackView: UIStackView!
+    @IBOutlet weak var weekTableView: UITableView!
     @IBOutlet weak var scrollview: UIScrollView!
     
     @IBOutlet weak var horizontalHourStackView: UIStackView!
@@ -44,9 +47,10 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.weekTableView.dataSource = self
+        self.weekTableView.delegate = self
         
-        
-        
+        self.weekTableView.layer.cornerRadius = 10
     
         let item1 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action:  #selector(self.goToAstronomy))
         
@@ -183,6 +187,30 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
     }
     
     
+     func numberOfSections(in weekTableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        
+         return week.count    }
+    
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "weekReuseIdentifier", for: indexPath)as!DaysWeatherCell
+        
+         cell.dayIconImage.image = UIImage(named: "113.png")
+         cell.nightIconImage.image = UIImage(named: "113.png")
+         
+         cell.backgroundColor = .clear
+         let data = week[indexPath.row]
+         cell.dayLabel.text = data
+         print(cell)
+         return cell
+    }
+    
     @IBAction func goToHourView(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "hourViewId") as? HourTableViewController {
             // vc.linkBrowser = self.browsers[indexPath.row].urlPage
@@ -207,8 +235,6 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
            scrollview.contentOffset.x = 0
        // }
     }
-    
-    
 
     /*
     // MARK: - Navigation
