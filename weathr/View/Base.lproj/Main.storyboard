@@ -1305,11 +1305,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="isMoonDownLabel" destination="SUT-BP-4ys" id="Pjb-MC-pAa"/>
+                        <outlet property="isSunUpLabel" destination="J7x-K9-adV" id="HFy-sc-ePg"/>
                         <outlet property="moonDownView" destination="9fs-TL-lbe" id="g9q-rB-Y29"/>
+                        <outlet property="moonPhaseLabel" destination="eAk-R6-CfG" id="fCz-gL-pBj"/>
+                        <outlet property="moonriseLabel" destination="0t9-Kc-YJL" id="EA3-74-vNw"/>
                         <outlet property="moonriseView" destination="XVU-YD-xhy" id="R6J-zM-S9y"/>
+                        <outlet property="moonsetLabel" destination="i7H-uh-Lw1" id="uJN-io-Wxq"/>
                         <outlet property="moonsetView" destination="sPT-W2-ki5" id="zkS-LF-qfX"/>
                         <outlet property="sunUpView" destination="8Ak-tW-SFS" id="roK-Gg-Uf9"/>
+                        <outlet property="sunriseLabel" destination="sCV-XO-fmI" id="92q-kx-G8X"/>
                         <outlet property="sunriseView" destination="s7Z-dY-MXq" id="kSr-eb-rWM"/>
+                        <outlet property="sunsetLabel" destination="td1-1Z-sdr" id="IfL-II-HYg"/>
                         <outlet property="sunsetView" destination="rsm-Jl-EX8" id="7zo-gx-qV9"/>
                     </connections>
                 </viewController>

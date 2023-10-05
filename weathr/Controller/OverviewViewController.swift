@@ -47,7 +47,8 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func goToAstronomy() {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "astronomy") as? AstronomyViewController {
-            
+            vc.city = "Dreux"
+
             // Afficher un modal
             //self.present(vc, animated: true, completion: nil)
             
