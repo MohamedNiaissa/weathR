@@ -292,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVc-Cz-p93" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3487.7862595419847" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="2619" y="-2"/>
         </scene>
         <!--Hour Table View Controller-->
         <scene sceneID="BeO-V5-crb">
@@ -562,6 +562,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXV-2Q-8qs">
+                                <rect key="frame" x="320" y="103" width="48" height="28"/>
+                                <color key="tintColor" systemColor="placeholderTextColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="moonphase.waxing.crescent" catalog="system" buttonSize="mini"/>
+                                <connections>
+                                    <action selector="astronomyButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vM6-zt-phf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrm-Sl-eof">
+                                <rect key="frame" x="260" y="103" width="48" height="28"/>
+                                <color key="tintColor" systemColor="placeholderTextColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="eye.circle.fill" catalog="system" buttonSize="mini"/>
+                                <connections>
+                                    <action selector="detailsButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0MM-cO-Rsa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -572,8 +590,10 @@
                             <constraint firstItem="usd-EM-qJH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="3xI-WE-Zth"/>
                             <constraint firstItem="zV7-00-Suk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="75F-vD-XTe"/>
                             <constraint firstItem="AIp-OZ-Pbc" firstAttribute="leading" secondItem="bP8-tc-3ug" secondAttribute="trailing" constant="18" id="7Ui-kC-z64"/>
+                            <constraint firstItem="RXV-2Q-8qs" firstAttribute="leading" secondItem="mrm-Sl-eof" secondAttribute="trailing" constant="12" id="9jT-kO-0dr"/>
                             <constraint firstItem="2Xb-NZ-qo5" firstAttribute="centerY" secondItem="zn9-n4-gz4" secondAttribute="centerY" id="Dgz-uI-QSg"/>
                             <constraint firstItem="c8A-rb-MjR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GqR-as-aea"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RXV-2Q-8qs" secondAttribute="trailing" constant="25" id="Kyl-PR-bWK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c8A-rb-MjR" secondAttribute="bottom" id="LLw-Gn-eZ3"/>
                             <constraint firstItem="UxA-sa-MJa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="143" id="P4b-1o-oDF"/>
                             <constraint firstItem="zV7-00-Suk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="PrR-BW-4Y1"/>
@@ -589,14 +609,19 @@
                             <constraint firstItem="usd-EM-qJH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="b49-Mk-i8O"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AIp-OZ-Pbc" secondAttribute="trailing" constant="128" id="dpq-rJ-5Fc"/>
                             <constraint firstAttribute="bottom" secondItem="usd-EM-qJH" secondAttribute="bottom" id="eBJ-Qk-MAD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="mrm-Sl-eof" secondAttribute="top" id="efV-rh-dlK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YwE-Zi-NyN" secondAttribute="trailing" constant="90" id="qfe-I8-gim"/>
                             <constraint firstItem="zn9-n4-gz4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="143" id="t2E-ZA-26x"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="RXV-2Q-8qs" secondAttribute="top" id="u04-Yc-iZr"/>
+                            <constraint firstItem="mrm-Sl-eof" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="260" id="w38-mm-uHh"/>
                             <constraint firstItem="OE1-rL-IzG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wWz-YZ-mkE"/>
                             <constraint firstAttribute="trailing" secondItem="usd-EM-qJH" secondAttribute="trailing" id="xPZ-N7-t03"/>
+                            <constraint firstItem="RXV-2Q-8qs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="320" id="xmS-su-Y3S"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7SZ-bS-9tC"/>
                     <connections>
+                        <outlet property="astronomyButton" destination="7SZ-bS-9tC" id="xgs-hD-H2A"/>
                         <outlet property="cityLabel" destination="zV7-00-Suk" id="z6l-sc-s4N"/>
                         <outlet property="currentTempLabel" destination="YwE-Zi-NyN" id="XG3-ta-lF4"/>
                         <outlet property="feelingLabel" destination="2Xb-NZ-qo5" id="eBw-Vg-7ro"/>
@@ -989,7 +1014,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x99-y8-jPC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2791.6030534351144" y="-2.1126760563380285"/>
+            <point key="canvasLocation" x="1860" y="-2"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Dzh-o6-40j">
@@ -1035,6 +1060,7 @@
         <image name="arrowshape.right.fill" catalog="system" width="128" height="104"/>
         <image name="clear" width="612" height="408"/>
         <image name="clouds" width="3980" height="5126"/>
+        <image name="eye.circle.fill" catalog="system" width="128" height="123"/>
         <image name="imageView:2mq-UT-m7R:image" width="64" height="64">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMSAAGGoF8QD05T
@@ -9217,12 +9243,16 @@ AAOqGAADqh4AA6omAAOqKAADqioAA6osAAOqLgADu84AA7vTAAO74AADu+MAA7vwAAO79QADu/0AA7wA
 AAO8BQADvA0AAAAAAAAEAQAAAAAAAABoAAAAAAAAAAAAAAAAAAO8EA
 </mutableData>
         </image>
+        <image name="moonphase.waxing.crescent" catalog="system" width="128" height="123"/>
         <image name="wind" catalog="system" width="128" height="103"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="quaternaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.17647058823529413" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.1764705882" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

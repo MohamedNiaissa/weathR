@@ -23,6 +23,7 @@ class DaysWeatherCell: UITableViewCell{
 
 class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var astronomyButton: UINavigationItem!
     @IBOutlet weak var weekTableView: UITableView!
     @IBOutlet weak var scrollview: UIScrollView!
     
@@ -58,12 +59,12 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
         self.weekTableView.layer.cornerRadius = 10
     
-        let item1 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action:  #selector(self.goToAstronomy))
+       /* let item1 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action:  #selector(self.goToAstronomy))
         
         let item2 = UIBarButtonItem(barButtonSystemItem: .search, target: self, action:#selector(self.goToDetails))
         
         self.navigationItem.rightBarButtonItems = [item1, item2]
-        
+        */
         scrollview.delegate = self
         scrollview.isDirectionalLockEnabled = true
         hourScrollView.delegate = self
@@ -253,7 +254,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     }
     */
     
-    @objc func goToAstronomy() {
+    @IBAction func astronomyButtonTouch(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "astronomy") as? AstronomyViewController {
             vc.city = "Dreux"
 
@@ -266,20 +267,18 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         }
     }
     
-    @objc func goToDetails() {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "details") as? DetailsViewController {
-            vc.city = "New York"
+    @IBAction func detailsButtonTouch(_ sender: Any) {
+        
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "details") as? DetailsViewController {
+                vc.city = "New York"
 
-            
-            // Afficher un modal
-            //self.present(vc, animated: true, completion: nil)
-            
-            // Afficher un push navigation
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-        }
+                
+                // Afficher un modal
+                //self.present(vc, animated: true, completion: nil)
+                
+                // Afficher un push navigation
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            }
     }
-    
-    
-
 }
