@@ -38,7 +38,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     @IBOutlet weak var arrowForDetailshours: UIButton!
     @IBOutlet weak var hoursStackView: UIStackView!
     
-    var city : String = "Paris"
+    var city : String?
     
     let hours = ["11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
     let week = ["Today", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
@@ -47,8 +47,14 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         self.weekTableView.dataSource = self
         self.weekTableView.delegate = self
+
+        if city == nil {
+            city = "Paris"
+        }
+
         
         self.weekTableView.layer.cornerRadius = 10
     
@@ -67,7 +73,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
         
         
-        if let url = URL(string: "http://api.weatherapi.com/v1/forecast.json?key=713f0909ad20490ca9d80112230310&q="+city) {
+        if let url = URL(string: "http://api.weatherapi.com/v1/forecast.json?key=713f0909ad20490ca9d80112230310&q="+city!) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     do {

@@ -29,16 +29,24 @@ struct ForecastHourCondition : Codable {
     let icon : String
 }
 
+class HourCustomCell : UITableViewCell  {
+    @IBOutlet weak var hourLabel: UILabel!
+    @IBOutlet weak var hourTempLabel: UILabel!
+    @IBOutlet weak var iconHourLabel: UIImageView!
+}
+
 class HourTableViewController: UITableViewController {
 
     var city : String?
     var hours = [String]()
     var temperatures = [String]()
     var weatherIcons = [String]()
-    
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("in")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -53,9 +61,19 @@ class HourTableViewController: UITableViewController {
                         let res = try JSONDecoder().decode(HourWeather.self, from: data)
                         let hourArray = res.forecast.forecastday[0].hour
                         
-                        
-                        
-                        print(hourArray)
+                        for hourElement in hourArray {
+                            self.hours.append(hourElement.time)
+                            self.temperatures.append(String(hourElement.temp_c) + "°")
+                            let icon = hourElement.condition.icon
+                            
+                            let lal = "sdqds"
+                            
+                            if let lastPathComponent = hourElement.condition.icon.components(separatedBy: "/").last {
+                                if let result = lastPathComponent.components(separatedBy: ".").first {
+                                    self.weatherIcons.append(result)
+                                }
+                            }
+                        }
                     } catch let error {
                         print(error)
                     }
@@ -79,19 +97,35 @@ class HourTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        return self.hours.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "hourReuseIdentifier", for: indexPath)as!HourCustomCell
 
-        // Configure the cell...
-
+        //print("in")
+        let hour = self.hours[indexPath.row]
+        let hourTemp = self.temperatures[indexPath.row]
+        let hourIcon = self.weatherIcons[indexPath.row]
+        
+        
+        
+        //print(hour)
+        if let range = hour.range(of: " ") {
+            let timeStr = hour[range.upperBound...]
+            cell.hourLabel.text = String(timeStr)
+        }
+        
+        
+        cell.hourTempLabel.text = hourTemp
+        cell.iconHourLabel.image = UIImage.init(named: hourIcon)
+        
+        print(hourTemp)
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

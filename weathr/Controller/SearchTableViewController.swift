@@ -81,14 +81,11 @@ class SearchTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cityReuseIdentifier", for: indexPath)as!WeatherCityCell
-        
-        print("Je reviens")
-        print(cityList)
-        print(currentTempList)
-        print(minTempList)
-        print(backgroundWeather)
         let city = self.cityList[indexPath.row]
-        if (self.minTempList.count > 0 && self.maxTempList.count > 0 && self.currentTempList.count > 0 && self.backgroundWeather.count > 0) {
+        print(minTempList)
+
+        if (self.minTempList.count > 2 && self.maxTempList.count > 2  && self.currentTempList.count > 2 && self.backgroundWeather.count > 2) {
+            print(minTempList)
             let minTemp = self.minTempList[indexPath.row]
             let maxTemp = self.maxTempList[indexPath.row]
             let currentTemp = self.currentTempList[indexPath.row]
@@ -97,9 +94,8 @@ class SearchTableViewController: UITableViewController {
             cell.maxTempLabel.text = String(format: "%.1f", maxTemp)
             cell.cityWeatherLabel.text = String(format: "%.1f", currentTemp)
             
-            let weatherCondition = background.lowercased() // Replace with the actual weather condition text
+            let weatherCondition = background.lowercased()
 
-            print(background)
             switch weatherCondition {
             case "Clear".lowercased(), "Sunny".lowercased():
                 cell.backgroundImage.image = UIImage(named: "clear")
@@ -124,10 +120,6 @@ class SearchTableViewController: UITableViewController {
                 print("Weather condition not recognized.")
             }
             
-            print("***************")
-            print(self.cityList)
-            print(cell.cityLabel.text)
-            print("***************")
         }
         // Configure the cell...
         
@@ -137,6 +129,16 @@ class SearchTableViewController: UITableViewController {
         
         
         return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "overviewID") as? OverviewViewController {
+            vc.city = self.cityList[indexPath.row]
+            self.present(vc, animated: true, completion: nil)
+        }
+        
     }
     
     func findDataWithCity(city: String) {
@@ -167,7 +169,7 @@ class SearchTableViewController: UITableViewController {
             }.resume()
             
         }
-        
+     
         
         /*
          // Override to support conditional editing of the table view.
