@@ -22,7 +22,7 @@ class SearchTableViewController: UITableViewController {
     var minTempList = [Double]()
     var maxTempList = [Double]()
     var currentTempList = [Double]()
-    var backgroundWeather = [String]()
+    var backgroundWeather = [Int]()
     
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class SearchTableViewController: UITableViewController {
                             self.currentTempList.append(res.current.temp_c)
                             self.maxTempList.append(res.forecast.forecastday[0].day.maxtemp_c)
                             self.minTempList.append(res.forecast.forecastday[0].day.mintemp_c)
-                            self.backgroundWeather.append(res.current.condition.text)
+                            self.backgroundWeather.append(res.current.condition.code)
                         } catch let error {
                             print(error)
                         }
@@ -94,28 +94,25 @@ class SearchTableViewController: UITableViewController {
             cell.maxTempLabel.text = String(format: "%.1f", maxTemp)
             cell.cityWeatherLabel.text = String(format: "%.1f", currentTemp)
             
-            let weatherCondition = background.lowercased()
+            let weatherCondition = background
 
             switch weatherCondition {
-                case "Clear".lowercased(), "Sunny".lowercased():
+                case 1000:
                     cell.backgroundImage.image = UIImage(named: "clear")
-                case "Partly cloudy".lowercased(), "Mostly Clear".lowercased():
+                case 1003,1150:
                     cell.backgroundImage.image = UIImage(named: "partly-cloudy")
-                case "Cloudy".lowercased():
+                case 1006, 1009, 1153, 1180:  // Cloudy, Overcast
                     cell.backgroundImage.image = UIImage(named: "clouds")
-                case "Rain".lowercased(), "Showers".lowercased():
+                case 1063,1183,1186,1189,1192,1195,1198,1201,1240, 1243,1246, 1261, 1264: // Patchy rain
                     cell.backgroundImage.image = UIImage(named: "rainy")
-                case "Snow".lowercased(), "Snow Showers".lowercased():
+                case 1066,1069,1072,1114,1168,1171,1204,1207,1210, 1213, 1216, 1219, 1222, 1225, 1237, 1249, 1252, 1255, 1258:
                     cell.backgroundImage.image = UIImage(named: "snow")
-                case "Thunderstorm".lowercased(), "Storm".lowercased():
+                case 1087,1117,1273,1276,1279,1282:
                     cell.backgroundImage.image = UIImage(named: "storm")
-                case "Fog".lowercased(), "Mist".lowercased():
+                case 1030,1135,1147:
                     cell.backgroundImage.image = UIImage(named: "fog")
-                case "Windy".lowercased():
-                    //cell.backgroundImage.image = UIImage(named: "clear")
-                    break
-                case "Haze".lowercased(), "Smoke".lowercased():
-                    cell.backgroundImage.image = UIImage(named: "fog")
+            
+             
                 default:
                     print("Weather condition not recognized.")
                 }
@@ -156,7 +153,7 @@ class SearchTableViewController: UITableViewController {
                         self.currentTempList.append(res.current.temp_c)
                         self.maxTempList.append(res.forecast.forecastday[0].day.maxtemp_c)
                         self.minTempList.append(res.forecast.forecastday[0].day.mintemp_c)
-                        self.backgroundWeather.append(res.current.condition.text)
+                        self.backgroundWeather.append(res.current.condition.code)
                         
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
