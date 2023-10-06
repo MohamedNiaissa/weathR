@@ -16,22 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weathr" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="way-CI-WwM">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_weathr" translatesAutoresizingMaskIntoConstraints="NO" id="3xc-O5-j5i">
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="100"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-
-                            <constraint firstItem="way-CI-WwM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Wf4-34-1g1"/>
-                            <constraint firstItem="way-CI-WwM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zhr-G3-g9M"/>
-                            <constraint firstItem="way-CI-WwM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vKB-o9-9Zo"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="way-CI-WwM" secondAttribute="bottom" id="wlc-17-mcf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3xc-O5-j5i" secondAttribute="bottom" id="I9L-1K-3ca"/>
+                            <constraint firstItem="3xc-O5-j5i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XAY-7f-l3j"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3xc-O5-j5i" secondAttribute="trailing" id="d1l-mG-9ko"/>
+                            <constraint firstItem="3xc-O5-j5i" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gPx-Xt-kqw"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -41,6 +36,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logo_weathr" width="500" height="500"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
