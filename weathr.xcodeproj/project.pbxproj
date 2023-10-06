@@ -8,23 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		A83850F62ACD4A97006FD670 /* HourTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83850F52ACD4A97006FD670 /* HourTableViewController.swift */; };
-		A83850F82ACD4B11006FD670 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83850F72ACD4B11006FD670 /* SearchViewController.swift */; };
 		A83850FA2ACD4BA7006FD670 /* AstronomyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83850F92ACD4BA7006FD670 /* AstronomyViewController.swift */; };
 		A83850FC2ACD4BED006FD670 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83850FB2ACD4BED006FD670 /* DetailsViewController.swift */; };
 		A83850FE2ACD4C25006FD670 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83850FD2ACD4C25006FD670 /* OverviewViewController.swift */; };
+		A8D1CE912ACD96A800A7E594 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D1CE902ACD96A800A7E594 /* SearchTableViewController.swift */; };
+		B125B39E2ACDF731000EF29B /* searchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B125B39D2ACDF731000EF29B /* searchViewModel.swift */; };
+		B16B1DD12ACE351F00B6A70D /* astronomyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16B1DD02ACE351F00B6A70D /* astronomyModel.swift */; };
+		B16B1DD32ACE3E1100B6A70D /* detailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16B1DD22ACE3E1100B6A70D /* detailsModel.swift */; };
+		B16B1DD52ACEAB0E00B6A70D /* overViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16B1DD42ACEAB0E00B6A70D /* overViewModel.swift */; };
 		B174E5612ACC5E4A00955ACA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B174E5602ACC5E4A00955ACA /* AppDelegate.swift */; };
 		B174E5632ACC5E4A00955ACA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B174E5622ACC5E4A00955ACA /* SceneDelegate.swift */; };
 		B174E5682ACC5E4A00955ACA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B174E5662ACC5E4A00955ACA /* Main.storyboard */; };
 		B174E56A2ACC5E4B00955ACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B174E5692ACC5E4B00955ACA /* Assets.xcassets */; };
 		B174E56D2ACC5E4B00955ACA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B174E56B2ACC5E4B00955ACA /* LaunchScreen.storyboard */; };
+		B1FDABDA2AD0047E0036780A /* hourViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FDABD92AD0047E0036780A /* hourViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A83850F52ACD4A97006FD670 /* HourTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourTableViewController.swift; sourceTree = "<group>"; };
-		A83850F72ACD4B11006FD670 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A83850F92ACD4BA7006FD670 /* AstronomyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronomyViewController.swift; sourceTree = "<group>"; };
 		A83850FB2ACD4BED006FD670 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		A83850FD2ACD4C25006FD670 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
+		A8D1CE902ACD96A800A7E594 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		B125B39D2ACDF731000EF29B /* searchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchViewModel.swift; sourceTree = "<group>"; };
+		B16B1DD02ACE351F00B6A70D /* astronomyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = astronomyModel.swift; sourceTree = "<group>"; };
+		B16B1DD22ACE3E1100B6A70D /* detailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailsModel.swift; sourceTree = "<group>"; };
+		B16B1DD42ACEAB0E00B6A70D /* overViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = overViewModel.swift; sourceTree = "<group>"; };
 		B174E55D2ACC5E4A00955ACA /* weathr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weathr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B174E5602ACC5E4A00955ACA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B174E5622ACC5E4A00955ACA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +41,7 @@
 		B174E5692ACC5E4B00955ACA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B174E56C2ACC5E4B00955ACA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B174E56E2ACC5E4B00955ACA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1FDABD92AD0047E0036780A /* hourViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hourViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +58,11 @@
 		B125B39A2ACD5CAB000EF29B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B125B39D2ACDF731000EF29B /* searchViewModel.swift */,
+				B16B1DD02ACE351F00B6A70D /* astronomyModel.swift */,
+				B16B1DD22ACE3E1100B6A70D /* detailsModel.swift */,
+				B16B1DD42ACEAB0E00B6A70D /* overViewModel.swift */,
+				B1FDABD92AD0047E0036780A /* hourViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -67,7 +82,7 @@
 				A83850FD2ACD4C25006FD670 /* OverviewViewController.swift */,
 				A83850FB2ACD4BED006FD670 /* DetailsViewController.swift */,
 				A83850F92ACD4BA7006FD670 /* AstronomyViewController.swift */,
-				A83850F72ACD4B11006FD670 /* SearchViewController.swift */,
+				A8D1CE902ACD96A800A7E594 /* SearchTableViewController.swift */,
 				A83850F52ACD4A97006FD670 /* HourTableViewController.swift */,
 			);
 			path = Controller;
@@ -174,12 +189,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A83850F82ACD4B11006FD670 /* SearchViewController.swift in Sources */,
+				B16B1DD12ACE351F00B6A70D /* astronomyModel.swift in Sources */,
 				A83850F62ACD4A97006FD670 /* HourTableViewController.swift in Sources */,
 				B174E5612ACC5E4A00955ACA /* AppDelegate.swift in Sources */,
+				B125B39E2ACDF731000EF29B /* searchViewModel.swift in Sources */,
+				B1FDABDA2AD0047E0036780A /* hourViewModel.swift in Sources */,
+				B16B1DD52ACEAB0E00B6A70D /* overViewModel.swift in Sources */,
 				A83850FC2ACD4BED006FD670 /* DetailsViewController.swift in Sources */,
+				A8D1CE912ACD96A800A7E594 /* SearchTableViewController.swift in Sources */,
 				A83850FE2ACD4C25006FD670 /* OverviewViewController.swift in Sources */,
 				B174E5632ACC5E4A00955ACA /* SceneDelegate.swift in Sources */,
+				B16B1DD32ACE3E1100B6A70D /* detailsModel.swift in Sources */,
 				A83850FA2ACD4BA7006FD670 /* AstronomyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
