@@ -22,6 +22,7 @@ class DaysWeatherCell: UITableViewCell{
 
 class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var astronomyButton: UINavigationItem!
     @IBOutlet weak var weekTableView: UITableView!
     @IBOutlet weak var scrollview: UIScrollView!
@@ -110,7 +111,12 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
         }
         
-        
+        if let tabBarItem1 = self.tabBarController?.tabBar.items?[0] {
+            
+                   tabBarItem1.title = ""
+                   tabBarItem1.image = UIImage(systemName: "house.fill")
+                   tabBarItem1.selectedImage = UIImage(systemName: "house")
+               }
         
         // MARK: - Scroll Horizontal Hours
     
@@ -148,52 +154,30 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                }
         
         horizontalHourStackView.layer.cornerRadius = 10
-        
-        // MARK: - StackView Week
-        
-        for i in 1...week.count{
-            print(week[i-1])
-            
-            //Create view
-            let newView = UIView()
-            newView.backgroundColor = .red
-            
-            //Create Day Label
-            let day = UILabel()
-            day.text = "week[i-1]"
-            day.center = CGPoint(x: 160, y: 285)
-            day.textColor = .black
-           
-            
 
-            
-            //Create Day Icon
-            let dayIcon = UIImageView()
-            dayIcon.image = UIImage(named: "116.png")
-            
-            //Create Night Icon
-            let nightIcon = UIImageView()
-            nightIcon.image = UIImage(named: "113.png")
-            
-            //Create minTemp Label
-            let minTemp = UILabel()
-            minTemp.text = "9°"
-            
-            //Create maxTemp Label
-            let maxTemp = UILabel()
-            maxTemp.text = "20°"
-            
-            // Put labels and images in the new View
-            newView.addSubview(day)
-//            newView.addSubview(dayIcon)
-//            newView.addSubview(nightIcon)
-//            newView.addSubview(minTemp)
-//            newView.addSubview(maxTemp)
-            
-            //Put the new View in the current StackView
-            
+        // MARK: - TabBar style
+        
+        if let tabBar = self.tabBarController?.tabBar {
+            // Set the tint color
+            tabBar.tintColor = UIColor.white
+            tabBar.unselectedItemTintColor = .black
             
         }
+        
+        if let tabBarItem1 = self.tabBarController?.tabBar.items?[0] {
+                   tabBarItem1.title = ""
+                   tabBarItem1.image = UIImage(systemName: "house.fill")
+                   tabBarItem1.selectedImage = UIImage(systemName: "house")
+            
+               }
+        
+        if let tabBarItem2 = self.tabBarController?.tabBar.items?[1] {
+            
+            tabBarItem2.title = ""
+            tabBarItem2.image = UIImage(systemName: "list.bullet")
+//                   tabBarItem1.selectedImage = UIImage(systemName: "list.bullet")
+            
+               }
     }
     
     
