@@ -85,9 +85,6 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                     do {
                         let res = try JSONDecoder().decode(Overview.self, from: data)
                         
-                        
-                        
-                        
                         DispatchQueue.main.async {
                             
                             print(res.current.temp_c)
@@ -102,6 +99,52 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                             self.feelingLabel.text = String(res.current.feelslike_c) + "°"
                             
                             self.messageTemp.text = String(res.forecast.forecastday[0].day.condition.text)
+
+                            // MARK: - StackView Week
+                            
+                            for i in 1...self.week.count{
+                                print(self.week[i-1])
+                                
+                                //Create view
+                                let newView = UIView()
+                                newView.backgroundColor = .red
+                                
+                                //Create Day Label
+                                let day = UILabel()
+                                day.text = "week[i-1]"
+                                day.center = CGPoint(x: 160, y: 285)
+                                day.textColor = .black
+                               
+                                
+
+                                
+                                //Create Day Icon
+                                let dayIcon = UIImageView()
+                                dayIcon.image = UIImage(named: "116.png")
+                                
+                                //Create Night Icon
+                                let nightIcon = UIImageView()
+                                nightIcon.image = UIImage(named: "113.png")
+                                
+                                //Create minTemp Label
+                                let minTemp = UILabel()
+                                minTemp.text = "9°"
+                                
+                                //Create maxTemp Label
+                                let maxTemp = UILabel()
+                                maxTemp.text = "20°"
+                                
+                                // Put labels and images in the new View
+                                newView.addSubview(day)
+                    //            newView.addSubview(dayIcon)
+                    //            newView.addSubview(nightIcon)
+                    //            newView.addSubview(minTemp)
+                    //            newView.addSubview(maxTemp)
+                                
+                                //Put the new View in the current StackView
+                                
+                                
+                            }
                         }
                         
                     } catch let error {
@@ -156,7 +199,6 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                }
         
         horizontalHourStackView.layer.cornerRadius = 10
-
         // MARK: - TabBar style
         
         if let tabBar = self.tabBarController?.tabBar {
