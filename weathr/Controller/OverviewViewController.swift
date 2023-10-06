@@ -84,9 +84,6 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                     do {
                         let res = try JSONDecoder().decode(Overview.self, from: data)
                         
-                        
-                        
-                        
                         DispatchQueue.main.async {
                             
                             print(res.current.temp_c)
@@ -101,6 +98,85 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                             self.feelingLabel.text = String(res.current.feelslike_c) + "°"
                             
                             self.messageTemp.text = String(res.forecast.forecastday[0].day.condition.text)
+                            
+                            for i in 1...self.hours.count {
+                                
+                                       
+                                //Create newStackView
+                                       let newStackView = UIStackView()
+                                       newStackView.axis = .vertical
+                                       newStackView.distribution = .fillEqually
+                                       newStackView.alignment = .center
+                                       newStackView.spacing = 5
+                                
+                                //Create hour label
+                                       let hourLabel = UILabel()
+                                hourLabel.text = self.hours[i-1]
+                                       hourLabel.textColor = .black
+                                
+                                //Create temperature label
+                                       let tempLabel = UILabel()
+                                       tempLabel.text = "17°"
+                                
+                                //Create Weather icon
+                                       let weatherImage = UIImageView()
+                                       weatherImage.image = UIImage(named: "113.png")
+                                       
+                                // Put labels and image in the new stackView
+                                       newStackView.addArrangedSubview(hourLabel)
+                                       newStackView.addArrangedSubview(tempLabel)
+                                       newStackView.addArrangedSubview(weatherImage)
+                                       
+                                //Put the new StackView in the current StackView horizonal
+                                self.horizontalHourStackView.insertArrangedSubview(newStackView, at: i-1)
+                                      
+                            }
+                            
+                            // MARK: - StackView Week
+                            
+                            for i in 1...self.week.count{
+                                print(self.week[i-1])
+                                
+                                //Create view
+                                let newView = UIView()
+                                newView.backgroundColor = .red
+                                
+                                //Create Day Label
+                                let day = UILabel()
+                                day.text = "week[i-1]"
+                                day.center = CGPoint(x: 160, y: 285)
+                                day.textColor = .black
+                               
+                                
+
+                                
+                                //Create Day Icon
+                                let dayIcon = UIImageView()
+                                dayIcon.image = UIImage(named: "116.png")
+                                
+                                //Create Night Icon
+                                let nightIcon = UIImageView()
+                                nightIcon.image = UIImage(named: "113.png")
+                                
+                                //Create minTemp Label
+                                let minTemp = UILabel()
+                                minTemp.text = "9°"
+                                
+                                //Create maxTemp Label
+                                let maxTemp = UILabel()
+                                maxTemp.text = "20°"
+                                
+                                // Put labels and images in the new View
+                                newView.addSubview(day)
+                    //            newView.addSubview(dayIcon)
+                    //            newView.addSubview(nightIcon)
+                    //            newView.addSubview(minTemp)
+                    //            newView.addSubview(maxTemp)
+                                
+                                //Put the new View in the current StackView
+                                
+                                
+                            }
                         }
                         
                     } catch let error {
@@ -120,41 +196,9 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
         // MARK: - Scroll Horizontal Hours
     
-        for i in 1...hours.count {
-            
-                   
-            //Create newStackView
-                   let newStackView = UIStackView()
-                   newStackView.axis = .vertical
-                   newStackView.distribution = .fillEqually
-                   newStackView.alignment = .center
-                   newStackView.spacing = 5
-            
-            //Create hour label
-                   let hourLabel = UILabel()
-                   hourLabel.text = hours[i-1]
-                   hourLabel.textColor = .black
-            
-            //Create temperature label
-                   let tempLabel = UILabel()
-                   tempLabel.text = "17°"
-            
-            //Create Weather icon
-                   let weatherImage = UIImageView()
-                   weatherImage.image = UIImage(named: "113.png")
-                   
-            // Put labels and image in the new stackView
-                   newStackView.addArrangedSubview(hourLabel)
-                   newStackView.addArrangedSubview(tempLabel)
-                   newStackView.addArrangedSubview(weatherImage)
-                   
-            //Put the new StackView in the current StackView horizonal
-            horizontalHourStackView.insertArrangedSubview(newStackView, at: i-1)
-                  
-               }
+     
         
         horizontalHourStackView.layer.cornerRadius = 10
-
         // MARK: - TabBar style
         
         if let tabBar = self.tabBarController?.tabBar {
