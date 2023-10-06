@@ -8,7 +8,6 @@
 import UIKit
 
 class DaysWeatherCell: UITableViewCell{
-    @IBOutlet weak var maxTempLabel: NSLayoutConstraint!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var dayIconImage: UIImageView!
     @IBOutlet weak var nightIconImage: UIImageView!
@@ -16,7 +15,8 @@ class DaysWeatherCell: UITableViewCell{
     
     @IBOutlet weak var weekCell: UIView!
     
-
+    @IBOutlet weak var maxTempLabel: UILabel!
+    
 }
 
 
@@ -60,6 +60,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
             city = "Paris"
         }
 
+    
         
         self.weekTableView.layer.cornerRadius = 10
     
@@ -153,7 +154,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                                 self.horizontalHourStackView.insertArrangedSubview(newStackView, at: i-1)
                                       
                             }
-                            
+
                             // MARK: - StackView Week
                             
                             for i in 1...self.week.count{
@@ -218,7 +219,39 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
         // MARK: - Scroll Horizontal Hours
     
-     
+        for i in 1...hours.count {
+            
+                   
+            //Create newStackView
+                   let newStackView = UIStackView()
+                   newStackView.axis = .vertical
+                   newStackView.distribution = .fillEqually
+                   newStackView.alignment = .center
+                   newStackView.spacing = 5
+            
+            //Create hour label
+                   let hourLabel = UILabel()
+                   hourLabel.text = hours[i-1]
+                   hourLabel.textColor = .white
+            
+            //Create temperature label
+                   let tempLabel = UILabel()
+                   tempLabel.text = "17°"
+            tempLabel.textColor = .white
+            
+            //Create Weather icon
+                   let weatherImage = UIImageView()
+                   weatherImage.image = UIImage(named: "113.png")
+                   
+            // Put labels and image in the new stackView
+                   newStackView.addArrangedSubview(hourLabel)
+                   newStackView.addArrangedSubview(tempLabel)
+                   newStackView.addArrangedSubview(weatherImage)
+                   
+            //Put the new StackView in the current StackView horizonal
+            horizontalHourStackView.insertArrangedSubview(newStackView, at: i-1)
+                  
+               }
         
         horizontalHourStackView.layer.cornerRadius = 10
         // MARK: - TabBar style
@@ -260,10 +293,14 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
          cell.dayIconImage.image = UIImage(named: "113.png")
          cell.nightIconImage.image = UIImage(named: "113.png")
+         cell.isUserInteractionEnabled = false;
          
          cell.backgroundColor = .clear
          let data = week[indexPath.row]
          cell.dayLabel.text = data
+         cell.dayLabel.textColor = .white
+         cell.minTempLabel.textColor = .white
+         cell.maxTempLabel.textColor = .white
          print(cell)
          return cell
     }
