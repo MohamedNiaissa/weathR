@@ -22,6 +22,7 @@ class DaysWeatherCell: UITableViewCell{
 
 class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var astronomyButton: UINavigationItem!
     @IBOutlet weak var weekTableView: UITableView!
     @IBOutlet weak var scrollview: UIScrollView!
@@ -186,15 +187,41 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
         }
         
-        
+        if let tabBarItem1 = self.tabBarController?.tabBar.items?[0] {
+            
+                   tabBarItem1.title = ""
+                   tabBarItem1.image = UIImage(systemName: "house.fill")
+                   tabBarItem1.selectedImage = UIImage(systemName: "house")
+               }
         
         // MARK: - Scroll Horizontal Hours
     
      
         
         horizontalHourStackView.layer.cornerRadius = 10
+        // MARK: - TabBar style
         
-   
+        if let tabBar = self.tabBarController?.tabBar {
+            // Set the tint color
+            tabBar.tintColor = UIColor.white
+            tabBar.unselectedItemTintColor = .black
+            
+        }
+        
+        if let tabBarItem1 = self.tabBarController?.tabBar.items?[0] {
+                   tabBarItem1.title = ""
+                   tabBarItem1.image = UIImage(systemName: "house.fill")
+                   tabBarItem1.selectedImage = UIImage(systemName: "house")
+            
+               }
+        
+        if let tabBarItem2 = self.tabBarController?.tabBar.items?[1] {
+            
+            tabBarItem2.title = ""
+            tabBarItem2.image = UIImage(systemName: "list.bullet")
+//                   tabBarItem1.selectedImage = UIImage(systemName: "list.bullet")
+            
+               }
     }
     
     
