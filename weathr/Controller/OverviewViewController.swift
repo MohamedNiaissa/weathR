@@ -17,12 +17,13 @@ class DaysWeatherCell: UITableViewCell{
     @IBOutlet weak var weekCell: UIView!
     
 
-    
 }
 
 
 class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var astronomyButton: UINavigationItem!
     @IBOutlet weak var weekTableView: UITableView!
     @IBOutlet weak var scrollview: UIScrollView!
     
@@ -47,7 +48,11 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        if let tabBar = self.tabBarController?.tabBar {
+            tabBar.backgroundColor = .quaternaryLabel
+        }
+        
+        
         self.weekTableView.dataSource = self
         self.weekTableView.delegate = self
 
@@ -58,19 +63,11 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
         self.weekTableView.layer.cornerRadius = 10
     
-        let item1 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action:  #selector(self.goToAstronomy))
-        
-        let item2 = UIBarButtonItem(barButtonSystemItem: .search, target: self, action:#selector(self.goToDetails))
-        
-        self.navigationItem.rightBarButtonItems = [item1, item2]
-        
         scrollview.delegate = self
         scrollview.isDirectionalLockEnabled = true
         hourScrollView.delegate = self
         hourScrollView.isDirectionalLockEnabled = true
         hourScrollView.contentOffset.y = 0
-        //hourScrollView.isScrollEnabled = false
-        
         
         
         if let url = URL(string: "http://api.weatherapi.com/v1/forecast.json?key=713f0909ad20490ca9d80112230310&q="+city!) {
@@ -80,12 +77,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                         let res = try JSONDecoder().decode(Overview.self, from: data)
                         
                         DispatchQueue.main.async {
-                            
-                            print(res.current.temp_c)
-                            print(res.forecast.forecastday[0].day.maxtemp_c)
-                            print(res.forecast.forecastday[0].day.mintemp_c)
-                            
-                    
+           
                             self.cityLabel.text = self.city
                             self.currentTempLabel.text = String(res.current.temp_c) + "°"
                             self.minTempLabel.text = String(res.forecast.forecastday[0].day.mintemp_c) + "°"
@@ -93,6 +85,29 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                             self.feelingLabel.text = String(res.current.feelslike_c) + "°"
                             
                             self.messageTemp.text = String(res.forecast.forecastday[0].day.condition.text)
+                            
+                            
+                            let weatherCondition = res.current.condition.code
+                            
+                            
+                            switch weatherCondition {
+                                case 1000:
+                                    self.backgroundImage.image = UIImage(named: "clear")
+                                case 1003,1150:
+                                    self.backgroundImage.image = UIImage(named: "partly-cloudy")
+                                case 1006, 1009, 1153, 1180:
+                                    self.backgroundImage.image = UIImage(named: "clouds")
+                                case 1063,1183,1186,1189,1192,1195,1198,1201,1240, 1243,1246, 1261, 1264:
+                                    self.backgroundImage.image = UIImage(named: "rainy")
+                                case 1066,1069,1072,1114,1168,1171,1204,1207,1210, 1213, 1216, 1219, 1222, 1225, 1237, 1249, 1252, 1255, 1258:
+                                    self.backgroundImage.image = UIImage(named: "snow")
+                                case 1087,1117,1273,1276,1279,1282:
+                                    self.backgroundImage.image = UIImage(named: "storm")
+                                case 1030,1135,1147:
+                                    self.backgroundImage.image = UIImage(named: "fog")
+                                default:
+                                    print("Weather condition not recognized.")
+                                }
                         
                             for i in 1...self.hours.count {
                                 
@@ -128,9 +143,6 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                                            }
                                        }
                                    }
-                                       
-                                
-                               
                                        
                                 // Put labels and image in the new stackView
                                        newStackView.addArrangedSubview(hourLabel)
@@ -197,15 +209,38 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
         }
         
-        
+        if let tabBarItem1 = self.tabBarController?.tabBar.items?[0] {
+            
+                   tabBarItem1.title = ""
+                   tabBarItem1.image = UIImage(systemName: "house.fill")
+                   tabBarItem1.selectedImage = UIImage(systemName: "house")
+               }
         
         // MARK: - Scroll Horizontal Hours
     
      
         
         horizontalHourStackView.layer.cornerRadius = 10
+        // MARK: - TabBar style
         
-   
+        if let tabBar = self.tabBarController?.tabBar {
+            // Set the tint color
+            tabBar.tintColor = UIColor.white
+            tabBar.unselectedItemTintColor = .black
+            
+        }
+        
+        if let tabBarItem1 = self.tabBarController?.tabBar.items?[0] {
+                   tabBarItem1.title = ""
+                   tabBarItem1.image = UIImage(systemName: "house.fill")
+                   tabBarItem1.selectedImage = UIImage(systemName: "house")
+            
+               }
+        
+        if let tabBarItem2 = self.tabBarController?.tabBar.items?[1] {
+            tabBarItem2.title = ""
+            tabBarItem2.image = UIImage(systemName: "list.bullet")
+        }
     }
     
     
@@ -235,12 +270,9 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     
     @IBAction func goToHourView(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "hourViewId") as? HourTableViewController {
-            // vc.linkBrowser = self.browsers[indexPath.row].urlPage
             
             vc.city = city
             
-            
-            // vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
         
@@ -248,14 +280,10 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     }
     
     func hourScrollViewDidScroll(_ scrollView: UIScrollView) {
-        //if scrollview.contentOffset.x>0 {
            hourScrollView.contentOffset.y = 0
-       // }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //if scrollview.contentOffset.x>0 {
            scrollview.contentOffset.x = 0
-       // }
     }
 
     /*
@@ -268,33 +296,24 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     }
     */
     
-    @objc func goToAstronomy() {
+    @IBAction func astronomyButtonTouch(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "astronomy") as? AstronomyViewController {
+                vc.modalPresentationStyle = .fullScreen
             vc.city = city
-
-            // Afficher un modal
-            //self.present(vc, animated: true, completion: nil)
             
-            // Afficher un push navigation
-            self.navigationController?.pushViewController(vc, animated: true)
-            
+            self.present(vc, animated: true, completion: nil)
         }
     }
     
-    @objc func goToDetails() {
-        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "details") as? DetailsViewController {
-            vc.city = city
+    @IBAction func detailsButtonTouch(_ sender: Any) {
+        
+            if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "details") as? DetailsViewController {
+                vc.city = city
 
-            
-            // Afficher un modal
-            //self.present(vc, animated: true, completion: nil)
-            
-            // Afficher un push navigation
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-        }
+                vc.modalPresentationStyle = .fullScreen
+                // Afficher un modal
+                self.present(vc, animated: true, completion: nil)
+                
+            }
     }
-    
-    
-
 }

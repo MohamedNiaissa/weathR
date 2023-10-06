@@ -48,28 +48,17 @@ class DetailsViewController: UIViewController {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     do {
-                        let res = try JSONDecoder().decode(WeatherDetails.self, from: data)
+                        let weatherDetailRes = try JSONDecoder().decode(WeatherDetails.self, from: data)
                         
-                        print(res)
                         DispatchQueue.main.async {
-                            self.pressureLabel.text = String(format: "%.1f", res.current.pressure_in) + "in"
-                            self.windOrientationLabel.text = res.current.wind_dir
-                            self.humidityLabel.text = String(res.current.humidity) + "%"
-                            self.uvLabel.text = String(res.current.uv) + "%"
-                            self.cloudsLabel.text = String(res.current.cloud) + "%"
-                            self.visibilityLabel.text = String(res.current.vis_km) + "km"
-                            self.winSpeedLabel.text = String(res.current.wind_kph) + "kph"
+                            self.pressureLabel.text = String(format: "%.1f", weatherDetailRes.current.pressure_in) + "in"
+                            self.windOrientationLabel.text = weatherDetailRes.current.wind_dir
+                            self.humidityLabel.text = String(weatherDetailRes.current.humidity) + "%"
+                            self.uvLabel.text = String(weatherDetailRes.current.uv) + "%"
+                            self.cloudsLabel.text = String(weatherDetailRes.current.cloud) + "%"
+                            self.visibilityLabel.text = String(weatherDetailRes.current.vis_km) + "km"
+                            self.winSpeedLabel.text = String(weatherDetailRes.current.wind_kph) + "kph"
                            }
-                    
-                        
-                        /*     @IBOutlet weak var pressureLabel: UILabel!
-                         @IBOutlet weak var windOrientationLabel: UILabel!
-                         @IBOutlet weak var humidityLabel: UILabel!
-                         @IBOutlet weak var uvLabel: UIView!
-                         @IBOutlet weak var precipitationLabel: UILabel!
-                         @IBOutlet weak var cloudsLabel: UILabel!
-                         @IBOutlet weak var visibilityLabel: UILabel!
-                         @IBOutlet weak var winSpeedLabel: UILabel!*/
                     } catch let error {
                         print(error)
                     }
@@ -77,15 +66,13 @@ class DetailsViewController: UIViewController {
             }.resume()
     }
     
-    
-   
-        
-        // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
     }
-        
+    @IBAction func closeTap(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func applyBorderAndCornerRadius(to view: UIView) {
-        view.layer.borderWidth = 2
-        view.layer.borderColor = UIColor.gray.cgColor
         view.layer.cornerRadius = 10
     }
 
