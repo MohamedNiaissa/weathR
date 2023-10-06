@@ -41,7 +41,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     
     var city : String?
     
-    let hours = ["11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
+    let hours = ["05:00", "08:00", "11:00", "14:00", "17:00", "20:00", "23:00"]
     let week = ["Today", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
     
     
@@ -50,7 +50,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
         if let tabBar = self.tabBarController?.tabBar {
             tabBar.backgroundColor = .quaternaryLabel
-                }
+        }
         
         
         self.weekTableView.dataSource = self
@@ -64,19 +64,11 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
         self.weekTableView.layer.cornerRadius = 10
     
-       /* let item1 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action:  #selector(self.goToAstronomy))
-        
-        let item2 = UIBarButtonItem(barButtonSystemItem: .search, target: self, action:#selector(self.goToDetails))
-        
-        self.navigationItem.rightBarButtonItems = [item1, item2]
-        */
         scrollview.delegate = self
         scrollview.isDirectionalLockEnabled = true
         hourScrollView.delegate = self
         hourScrollView.isDirectionalLockEnabled = true
         hourScrollView.contentOffset.y = 0
-        //hourScrollView.isScrollEnabled = false
-        
         
         
         if let url = URL(string: "http://api.weatherapi.com/v1/forecast.json?key=713f0909ad20490ca9d80112230310&q="+city!) {
@@ -86,12 +78,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                         let res = try JSONDecoder().decode(Overview.self, from: data)
                         
                         DispatchQueue.main.async {
-                            
-                            print(res.current.temp_c)
-                            print(res.forecast.forecastday[0].day.maxtemp_c)
-                            print(res.forecast.forecastday[0].day.mintemp_c)
-                            
-                    
+           
                             self.cityLabel.text = self.city
                             self.currentTempLabel.text = String(res.current.temp_c) + "°"
                             self.minTempLabel.text = String(res.forecast.forecastday[0].day.mintemp_c) + "°"
@@ -99,6 +86,74 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                             self.feelingLabel.text = String(res.current.feelslike_c) + "°"
                             
                             self.messageTemp.text = String(res.forecast.forecastday[0].day.condition.text)
+                            
+                            
+                            let weatherCondition = res.current.condition.code
+                            
+                            
+                            switch weatherCondition {
+                                case 1000:
+                                    self.backgroundImage.image = UIImage(named: "clear")
+                                case 1003,1150:
+                                    self.backgroundImage.image = UIImage(named: "partly-cloudy")
+                                case 1006, 1009, 1153, 1180:
+                                    self.backgroundImage.image = UIImage(named: "clouds")
+                                case 1063,1183,1186,1189,1192,1195,1198,1201,1240, 1243,1246, 1261, 1264:
+                                    self.backgroundImage.image = UIImage(named: "rainy")
+                                case 1066,1069,1072,1114,1168,1171,1204,1207,1210, 1213, 1216, 1219, 1222, 1225, 1237, 1249, 1252, 1255, 1258:
+                                    self.backgroundImage.image = UIImage(named: "snow")
+                                case 1087,1117,1273,1276,1279,1282:
+                                    self.backgroundImage.image = UIImage(named: "storm")
+                                case 1030,1135,1147:
+                                    self.backgroundImage.image = UIImage(named: "fog")
+                                default:
+                                    print("Weather condition not recognized.")
+                                }
+                        
+                            for i in 1...self.hours.count {
+                                
+                                //Create newStackView
+                                let newStackView = UIStackView()
+                                newStackView.axis = .vertical
+                                newStackView.distribution = .fillEqually
+                                newStackView.alignment = .center
+                                newStackView.spacing = 5
+                                
+                                //Create hour label
+                                let hourLabel = UILabel()
+                                hourLabel.text = self.hours[i-1]
+                                hourLabel.textColor = .black
+                                
+                                //Create temperature label
+                                let tempLabel = UILabel()
+                                
+                                tempLabel.text = "17°"
+                                let weatherImage = UIImageView()
+                                   
+                                   for elem in res.forecast.forecastday[0].hour {
+                                       let timeStr = elem.time[elem.time.range(of: " ")!.upperBound...]
+                                       
+                                       if (timeStr == self.hours[i-1]) {
+                                           tempLabel.text = String(elem.temp_c) + "°"
+                                           
+                                           //Create Weather Icon
+                                           if let lastPathComponent = elem.condition.icon.components(separatedBy: "/").last {
+                                               if let result = lastPathComponent.components(separatedBy: ".").first {
+                                                   weatherImage.image = UIImage(named: result + ".png")
+                                               }
+                                           }
+                                       }
+                                   }
+                                       
+                                // Put labels and image in the new stackView
+                                       newStackView.addArrangedSubview(hourLabel)
+                                       newStackView.addArrangedSubview(tempLabel)
+                                       newStackView.addArrangedSubview(weatherImage)
+                                       
+                                //Put the new StackView in the current StackView horizonal
+                                self.horizontalHourStackView.insertArrangedSubview(newStackView, at: i-1)
+                                      
+                            }
 
                             // MARK: - StackView Week
                             
@@ -216,12 +271,9 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
                }
         
         if let tabBarItem2 = self.tabBarController?.tabBar.items?[1] {
-            
             tabBarItem2.title = ""
             tabBarItem2.image = UIImage(systemName: "list.bullet")
-//                   tabBarItem1.selectedImage = UIImage(systemName: "list.bullet")
-            
-               }
+        }
     }
     
     
@@ -255,12 +307,9 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     
     @IBAction func goToHourView(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "hourViewId") as? HourTableViewController {
-            // vc.linkBrowser = self.browsers[indexPath.row].urlPage
             
             vc.city = city
             
-            
-            // vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }
         
@@ -268,14 +317,10 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     }
     
     func hourScrollViewDidScroll(_ scrollView: UIScrollView) {
-        //if scrollview.contentOffset.x>0 {
            hourScrollView.contentOffset.y = 0
-       // }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //if scrollview.contentOffset.x>0 {
            scrollview.contentOffset.x = 0
-       // }
     }
 
     /*
@@ -290,30 +335,22 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
     
     @IBAction func astronomyButtonTouch(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "astronomy") as? AstronomyViewController {
-            vc.city = "Dreux"
-    
                 vc.modalPresentationStyle = .fullScreen
-            // Afficher un modal
+            vc.city = city
+            
             self.present(vc, animated: true, completion: nil)
-            
-            // Afficher un push navigation
-//            self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
     
     @IBAction func detailsButtonTouch(_ sender: Any) {
         
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "details") as? DetailsViewController {
-                vc.city = "New York"
+                vc.city = city
 
-                    vc.modalPresentationStyle = .fullScreen
+                vc.modalPresentationStyle = .fullScreen
                 // Afficher un modal
                 self.present(vc, animated: true, completion: nil)
                 
-                // Afficher un push navigation
-//                self.navigationController?.pushViewController(vc, animated: true)
-//                
             }
     }
 }

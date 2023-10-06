@@ -15,6 +15,7 @@ struct Overview: Codable {
 struct CurrentWeather : Codable {
     let temp_c : Double
     let feelslike_c : Double
+    let condition : OverviewCondition
 }
 
 struct OverviewForecast : Codable  {
@@ -23,6 +24,7 @@ struct OverviewForecast : Codable  {
 
 struct OverviewForecastDay : Codable {
     let day: OverviewDay
+    let hour : [OverviewHour]
     
 }
 
@@ -32,8 +34,16 @@ struct OverviewDay : Codable {
     let condition : OverviewCondition
 }
 
+struct OverviewHour : Codable {
+    let time : String
+    let temp_c : Double
+    let condition : OverviewCondition
+}
+
 struct OverviewCondition : Codable {
-    let text: String
+    let text : String
+    let icon : String
+    let code : Int
 }
 
 

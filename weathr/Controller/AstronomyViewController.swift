@@ -31,7 +31,7 @@ class AstronomyViewController: UIViewController {
     @IBOutlet weak var moonriseImage: UIImageView!
     @IBOutlet weak var sunsetImage: UIImageView!
     @IBOutlet weak var sunriseImage: UIImageView!
-    //var city = "Dreux"
+    
     
     var city: String?
 
@@ -53,17 +53,16 @@ class AstronomyViewController: UIViewController {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     do {
-                        let res = try JSONDecoder().decode(Astronomy.self, from: data)
+                        let astroRes = try JSONDecoder().decode(Astronomy.self, from: data)
                         
-                        print(res.astronomy.astro.moonrise)
                         DispatchQueue.main.async {
-                            self.sunriseLabel.text = res.astronomy.astro.sunrise
-                            self.sunsetLabel.text = res.astronomy.astro.sunset
-                            self.moonriseLabel.text = res.astronomy.astro.moonrise
-                            self.moonsetLabel.text = res.astronomy.astro.moonset
-                            self.moonPhaseLabel.text = res.astronomy.astro.moon_phase
-                            self.isSunUpLabel.text = res.astronomy.astro.is_sun_up == 0 ? "Sun up" : "Sun Down"
-                            self.isMoonDownLabel.text = res.astronomy.astro.is_moon_up == 0 ? "Moon up" : "Moon Down"
+                            self.sunriseLabel.text = astroRes.astronomy.astro.sunrise
+                            self.sunsetLabel.text = astroRes.astronomy.astro.sunset
+                            self.moonriseLabel.text = astroRes.astronomy.astro.moonrise
+                            self.moonsetLabel.text = astroRes.astronomy.astro.moonset
+                            self.moonPhaseLabel.text = astroRes.astronomy.astro.moon_phase
+                            self.isSunUpLabel.text = astroRes.astronomy.astro.is_sun_up == 0 ? "Sun up" : "Sun Down"
+                            self.isMoonDownLabel.text = astroRes.astronomy.astro.is_moon_up == 0 ? "Moon up" : "Moon Down"
                            }
                     
                     } catch let error {
@@ -78,16 +77,6 @@ class AstronomyViewController: UIViewController {
         func applyBorderAndCornerRadius(to view: UIView) {
             view.layer.cornerRadius = 10
         }
-        
-        /*
-         // MARK: - Navigation
-         
-         // In a storyboard-based application, you will often want to do a little preparation before navigation
-         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-         }
-         */
         
     }
     @IBAction func closeTap(_ sender: Any) {
