@@ -47,7 +47,23 @@ class HourTableViewController: UITableViewController {
         super.viewDidLoad()
         
         print("in")
+        assignbackground()
 
+    
+        
+        func assignbackground(){
+                let background = UIImage(named: "clear")
+                var imageView : UIImageView!
+                imageView = UIImageView(frame: view.bounds)
+            imageView.contentMode =  UIView.ContentMode.scaleAspectFill
+                imageView.clipsToBounds = true
+                imageView.image = background
+                imageView.center = view.center
+                view.addSubview(imageView)
+                self.tableView.backgroundView = imageView
+            }
+
+        self.tableView.contentMode = UIView.ContentMode.scaleAspectFill
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -104,6 +120,8 @@ class HourTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hourReuseIdentifier", for: indexPath)as!HourCustomCell
+        
+        cell.backgroundColor = .clear
 
         //print("in")
         let hour = self.hours[indexPath.row]

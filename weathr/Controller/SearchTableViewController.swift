@@ -127,7 +127,10 @@ class SearchTableViewController: UITableViewController {
         
         cell.cityLabel.text = city
         
-        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor.clear
+        cell.selectedBackgroundView = bgColorView
+
         return cell
     }
     

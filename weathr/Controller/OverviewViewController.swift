@@ -8,7 +8,6 @@
 import UIKit
 
 class DaysWeatherCell: UITableViewCell{
-    @IBOutlet weak var maxTempLabel: NSLayoutConstraint!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var dayIconImage: UIImageView!
     @IBOutlet weak var nightIconImage: UIImageView!
@@ -16,7 +15,8 @@ class DaysWeatherCell: UITableViewCell{
     
     @IBOutlet weak var weekCell: UIView!
     
-
+    @IBOutlet weak var maxTempLabel: UILabel!
+    
 }
 
 
@@ -60,6 +60,7 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
             city = "Paris"
         }
 
+    
         
         self.weekTableView.layer.cornerRadius = 10
     
@@ -133,11 +134,12 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
             //Create hour label
                    let hourLabel = UILabel()
                    hourLabel.text = hours[i-1]
-                   hourLabel.textColor = .black
+                   hourLabel.textColor = .white
             
             //Create temperature label
                    let tempLabel = UILabel()
                    tempLabel.text = "17°"
+            tempLabel.textColor = .white
             
             //Create Weather icon
                    let weatherImage = UIImageView()
@@ -197,10 +199,14 @@ class OverviewViewController: UIViewController, UIScrollViewDelegate, UITableVie
         
          cell.dayIconImage.image = UIImage(named: "113.png")
          cell.nightIconImage.image = UIImage(named: "113.png")
+         cell.isUserInteractionEnabled = false;
          
          cell.backgroundColor = .clear
          let data = week[indexPath.row]
          cell.dayLabel.text = data
+         cell.dayLabel.textColor = .white
+         cell.minTempLabel.textColor = .white
+         cell.maxTempLabel.textColor = .white
          print(cell)
          return cell
     }
